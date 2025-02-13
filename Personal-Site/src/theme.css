@@ -1,0 +1,109 @@
+/* ========== Light Theme ========== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #FCDFAA;
+  --bg-primary-hover: #F8D090;
+  --bg-secondary: #FAE8C8;
+  --bg-secondary-hover: #F7DEB4;
+  --bg-tertiary: #F5C37E;
+  --bg-tertiary-hover: #EAB168;
+  --bg-sidebar: #E6B47C;
+  --bg-sidebar-hover: #D8A368;
+  --bg-neutral: #F3E3D6;
+  --bg-neutral-hover: #E8D2C0;
+  --bg-positive: #C8E6C9;
+  --bg-positive-hover: #B3DBB5;
+  --bg-warning: #FFECB3;
+  --bg-warning-hover: #FFE08A;
+  --bg-negative: #FFCDD2;
+  --bg-negative-hover: #F4A9AF;
+
+  /* Text Colors */
+  --text-primary: #4A3F35;
+  --text-secondary: #7A6655;
+  --text-tertiary: #A88D7C;
+  --text-positive: #388E3C;
+  --text-warning: #E65100;
+  --text-negative: #D32F2F;
+
+  /* Buttons */
+  --btn-default: #D88A50;
+  --btn-default-hover: #C3723B;
+  --btn-secondary: #AF5A47;
+  --btn-secondary-hover: #9B443A;
+  --btn-tertiary: #E8B77B;
+  --btn-tertiary-hover: #D29D63;
+
+  /* Icons */
+  --icon-default: #7A6655;
+  --icon-neutral: #A88D7C;
+  --icon-positive: #4CAF50;
+  --icon-positive-hover: #43A047;
+  --icon-warning: #FF9800;
+  --icon-warning-hover: #FB8C00;
+  --icon-negative: #E57373;
+  --icon-negative-hover: #EF5350;
+
+  /* Containers & Shadows */
+  --outline: #D2A675;
+  --outline-hover: #C89A65;
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Dark Theme ========== */
+[data-theme="dark"] {
+  --bg-primary: #2A1F18;
+  --bg-primary-hover: #3A2C23;
+  --bg-secondary: #3A2C23;
+  --bg-secondary-hover: #4A3F35;
+  --bg-tertiary: #553F33;
+  --bg-tertiary-hover: #674D3F;
+  --bg-sidebar: #3E2F25;
+  --bg-sidebar-hover: #523E32;
+  --bg-neutral: #4A3F35;
+  --bg-neutral-hover: #5A4E44;
+  --bg-positive: #1B5E20;
+  --bg-positive-hover: #256E27;
+  --bg-warning: #FFB74D;
+  --bg-warning-hover: #FFA726;
+  --bg-negative: #B71C1C;
+  --bg-negative-hover: #C62828;
+
+  /* Text Colors */
+  --text-primary: #FCDFAA;
+  --text-secondary: #D8BFA5;
+  --text-tertiary: #A88D7C;
+  --text-positive: #66BB6A;
+  --text-warning: #FB8C00;
+  --text-negative: #EF5350;
+
+  /* Buttons */
+  --btn-default: #D88A50;
+  --btn-default-hover: #C3723B;
+  --btn-secondary: #AF5A47;
+  --btn-secondary-hover: #9B443A;
+  --btn-tertiary: #E8B77B;
+  --btn-tertiary-hover: #D29D63;
+
+  /* Icons */
+  --icon-default: #D8BFA5;
+  --icon-neutral: #A88D7C;
+  --icon-positive: #66BB6A;
+  --icon-positive-hover: #43A047;
+  --icon-warning: #FF9800;
+  --icon-warning-hover: #FB8C00;
+  --icon-negative: #EF5350;
+  --icon-negative-hover: #E53935;
+
+  /* Containers & Shadows */
+  --outline: #7A6655;
+  --outline-hover: #6A5649;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* Example usage */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-primary-hover:hover { background-color: var(--bg-primary-hover); }
+.text-primary { color: var(--text-primary); }
+.btn-default { background-color: var(--btn-default); color: white; }
+.btn-default:hover { background-color: var(--btn-default-hover); }
