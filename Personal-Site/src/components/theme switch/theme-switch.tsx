@@ -3,11 +3,11 @@ const themeSwitchStyles = {
     position: "fixed",
     bottom: "1rem",
     right: "1rem",
-    border: "none",
+    border: "2px solid var(--icon-border)",
     cursor: "pointer",
     padding: "0.5rem",
     borderRadius: "50%",
-    background: 'var(--icon-bg)',
+    background: 'var(--icon-neutral)',
     boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
     transition: "background 0.2s",
     "&:hover": {
@@ -20,7 +20,7 @@ function ThemeSwitch() {
     // document.documentElement.setAttribute("data-theme", "dark");
     return (
         <button id="theme-switch" aria-label="Switch Theme" style={themeSwitchStyles}>
-            <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 22C7.25 21.5858 7.58579 21.25 8 21.25H16C16.4142 21.25 16.75 21.5858 16.75 22C16.75 22.4142 16.4142 22.75 16 22.75H8C7.58579 22.75 7.25 22.4142 7.25 22Z" fill="#1C274C"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V3C12.75 3.41421 12.4142 3.75 12 3.75C11.5858 3.75 11.25 3.41421 11.25 3V2C11.25 1.58579 11.5858 1.25 12 1.25ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H3C3.41421 11.25 3.75 11.5858 3.75 12C3.75 12.4142 3.41421 12.75 3 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM20.25 12C20.25 11.5858 20.5858 11.25 21 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H21C20.5858 12.75 20.25 12.4142 20.25 12Z" fill="#1C274C"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.08267 15.25H2C1.58579 15.25 1.25 15.5858 1.25 16C1.25 16.4142 1.58579 16.75 2 16.75H22C22.4142 16.75 22.75 16.4142 22.75 16C22.75 15.5858 22.4142 15.25 22 15.25H17.9173H6.08267Z" fill="#1C274C"/>

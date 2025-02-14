@@ -1,16 +1,52 @@
 import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { ReactNode } from "react";
 import HomePage from "./home"
 import Goals from "./goals"
+import ThemeSwitch from "./theme switch/theme-switch";
 
 function AnimatedRoutes() {
+    const location = useLocation();
+
+
     return (
+        <>
         <AnimatePresence mode="wait">
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/goals" element={<Goals />} />
+            <Routes location={location} key={location.pathname}>
+                <Route path="/"
+                    element={ 
+                        <PageWrapper>
+                            <HomePage /> 
+                        </PageWrapper>
+                    }  
+                    />
+                <Route path="/goals" 
+                    element={
+                        <PageWrapper>
+                            <Goals />
+                        </PageWrapper>
+                    }
+                    />
             </Routes>
         </AnimatePresence>
+        <ThemeSwitch />
+        </>
+    )
+}
+
+function PageWrapper({ children }: { children: ReactNode }) {
+    return (
+        <motion.div
+            // Entering the page
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            // Exiting the page
+            exit={{ opacity: 0, y: -20 }}
+            // Transition Properties
+            transition={{ duration: 0.4 }}
+        >
+            {children}
+        </motion.div>
     )
 }
 
