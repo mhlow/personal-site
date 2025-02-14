@@ -102,8 +102,8 @@
 }
 
 /* Example usage */
-.bg-primary { background-color: var(--bg-primary); }
+/* .bg-primary { background-color: var(--bg-primary); }
 .bg-primary-hover:hover { background-color: var(--bg-primary-hover); }
 .text-primary { color: var(--text-primary); }
 .btn-default { background-color: var(--btn-default); color: white; }
-.btn-default:hover { background-color: var(--btn-default-hover); }
+.btn-default:hover { background-color: var(--btn-default-hover); } */
