@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ThemeSwitch from "./theme switch/theme-switch";
 
 function HomePage() {
     return (

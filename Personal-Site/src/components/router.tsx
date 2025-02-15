@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ReactNode } from "react";
 import HomePage from "./home"
 import Goals from "./goals"
+import Notes from "./notes";
 import ThemeSwitch from "./theme switch/theme-switch";
 
 function AnimatedRoutes() {
@@ -27,6 +28,13 @@ function AnimatedRoutes() {
                         </PageWrapper>
                     }
                     />
+                <Route path="/notes" 
+                    element={
+                        <PageWrapper>
+                            <Notes />
+                        </PageWrapper>
+                    }
+                    />
             </Routes>
         </AnimatePresence>
         <ThemeSwitch />
@@ -36,7 +44,7 @@ function AnimatedRoutes() {
 
 function PageWrapper({ children }: { children: ReactNode }) {
     return (
-        <motion.div
+        <motion.div 
             // Entering the page
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
