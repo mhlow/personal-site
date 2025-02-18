@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import { AnimatePresence, motion } from "framer-motion"
 import { ReactNode } from "react";
-import HomePage from "./home"
-import Goals from "./goals"
-import Notes from "./notes";
-import ThemeSwitch from "./theme switch/theme-switch";
+import HomePage from "./pages/home"
+import Goals from "./pages/goals"
+import Notes from "./pages/notes";
+import ThemeSwitch from "./components/theme switch/theme-switch";
 
 function AnimatedRoutes() {
     const location = useLocation();

@@ -1,0 +1,36 @@
+.animatedText {
+  background-image: linear-gradient(
+    to right,
+    var(--text-highlight),
+    var(--text-highlight) 50%,
+    var(--text-secondary) 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  position: relative;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.animatedText:before{
+  content: '';
+  background: var(--text-highlight);
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.animatedText:hover {
+ background-position: 0;
+}
+
+.animatedText:hover::before{
+  width: 100%;
+}

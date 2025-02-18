@@ -20,12 +20,13 @@
 
   /* Text Colors */
   --text-primary: #4A3F35;
-  --text-secondary: #7A6655;
+  --text-secondary: #665547;
   --text-tertiary: #A88D7C;
   --text-positive: #388E3C;
   --text-warning: #E65100;
   --text-negative: #D32F2F;
   --text-disabled: #727581;
+  --text-highlight: #74a0ff;
 
   /* Buttons */
   --btn-default: #D88A50;
@@ -82,6 +83,7 @@
   --text-warning: #FB8C00;
   --text-negative: #EF5350;
   --text-disabled: #727581;
+  --text-highlight: #4F29F0;
 
   /* Buttons */
   --btn-default: #D88A50;

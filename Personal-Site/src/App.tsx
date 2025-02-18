@@ -1,9 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom"
-import AnimatedRoutes from "./components/router"
+import { BrowserRouter } from "react-router-dom"
+import AnimatedRoutes from "./router"
 
 // Following this
 // https://www.youtube.com/watch?v=zFluneNORCA

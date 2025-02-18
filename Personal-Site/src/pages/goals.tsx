@@ -1,10 +1,8 @@
-import Callout from "./callout/callout";
+import Callout from "../components/callout/callout";
+import Checkbox from "../components/checkbox/checkbox";
 import "./goals.css";
-import Checkbox from "./checkbox/checkbox";
 
 function Goals() {
-    // Checkbox for each goal
-    // one of them being finish this site
     return (
         <div className="goalsOuter">
             <h1>Goals</h1>
@@ -14,10 +12,11 @@ function Goals() {
             <div>
                 <Callout title="General" defaultOpen={true}>
                     <div>
-                        <Checkbox defaultState="true">Learn React</Checkbox>
+                        <Checkbox defaultState={true}>Learn React</Checkbox>
                         <Checkbox>Learn Rust</Checkbox>
                         <Checkbox>Finish Pentesterlab Subscription</Checkbox>
                         <Checkbox>Write up notes for CTFs</Checkbox>
+                        <Checkbox>Make a playable game</Checkbox>
                     </div>
                 </Callout>
                 <Callout title="Personal Site">
