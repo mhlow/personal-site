@@ -24,7 +24,9 @@ const themeSwitchStyles = {
 
 
 function ThemeSwitch() {
-    // document.documentElement.setAttribute("data-theme", "dark");
+    const [iconBackground, setIconBackground] = useState("#F5CF9D");
+    const [transformAmount, setTransformAmount] = useState(0);
+
     let darkmode : String | null = localStorage.getItem("darkmode");
     // console.log("darkmode is", darkmode);
     if (!darkmode) {
@@ -32,10 +34,14 @@ function ThemeSwitch() {
             // console.log("detected dark mode");
             darkmode = "enabled";
             localStorage.setItem("darkmode", "enabled");
+            setTransformAmount(0);
+            setIconBackground("#F5CF9D");
         } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
             // console.log("detected light mode");
             darkmode = "disabled";
             localStorage.setItem("darkmode", "disabled");
+            setTransformAmount(-52);
+            setIconBackground("#C0B2A4");
         }
     }
 
@@ -58,8 +64,7 @@ function ThemeSwitch() {
             setIconBackground("#C0B2A4");
         }
     }
-
-    const [iconBackground, setIconBackground] = useState("#F5CF9D");
+    
     const iconContainerStyles = {
         width: "120px",
         height: "100%",
@@ -69,7 +74,6 @@ function ThemeSwitch() {
         flexWrap: "nowrap",
         transition: "background-color 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
     } as React.CSSProperties;
-    const [transformAmount, setTransformAmount] = useState(0);
     const sunMoonIconStyles = {
         margin: "2px",
         position: "relative",
