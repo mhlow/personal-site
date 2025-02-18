@@ -10,11 +10,11 @@ function HomePage() {
             <br />
 
             <AnimatedText>
-                <Link to="/goals">Goals</Link>
+                <Link to="/personal-site/goals">Goals</Link>
             </AnimatedText>
             <br />
             <AnimatedText>
-                <Link to="/ctf-notes">CTF Notes</Link>
+                <Link to="/personal-site/ctf-notes">CTF Notes</Link>
             </AnimatedText>
         </div>
     )

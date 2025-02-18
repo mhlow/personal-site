@@ -15,28 +15,28 @@ function AnimatedRoutes() {
         <>
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-                <Route path="/"
+                <Route path="/personal-site"
                     element={ 
                         <PageWrapper>
                             <HomePage /> 
                         </PageWrapper>
                     }  
                     />
-                <Route path="/goals" 
+                <Route path="/personal-site/goals" 
                     element={
                         <PageWrapper>
                             <Goals />
                         </PageWrapper>
                     }
                     />
-                <Route path="/notes" 
+                <Route path="/personal-site/notes" 
                     element={
                         <PageWrapper>
                             <Notes />
                         </PageWrapper>
                     }
                     />
-                <Route path="/ctf-notes"
+                <Route path="/personal-site/ctf-notes"
                     element={
                         <PageWrapper>
                             <CTFNotesAndWriteups />
