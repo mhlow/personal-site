@@ -65,3 +65,7 @@ button:focus-visible {
 .test {
   background-color: #ff0000;
 }
+
+.test2 {
+  border: #ff0000 1px solid;
+}

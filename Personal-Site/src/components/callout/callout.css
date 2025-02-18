@@ -1,0 +1,25 @@
+.callout {
+    padding: 2rem 1rem;
+    /* background-color: var(--bg-secondary-hover); */
+}
+
+.calloutHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calloutHeader svg {
+    margin: 1rem;
+    transition: transform 0.2s ease-out;
+}
+
+.calloutCollapse {
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+}
+
+svg.expanded {
+    transform: rotate(90deg);
+}

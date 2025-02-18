@@ -1,4 +1,4 @@
-import Callout from "./callout";
+import Callout from "./callout/callout";
 import "./goals.css";
 
 function Goals() {
@@ -13,10 +13,10 @@ function Goals() {
             <div>
                 <input type="checkbox" id="goal1" name="goal1" value="goal1"></input>
                 <label>Finish this site</label>
-                <Callout title="Goal 1">
-                    <p>
+                <Callout title="Personal Site">
+                    <div>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab sed perspiciatis iste eaque at id, laboriosam eos vero accusamus! Excepturi, dolores. Quidem consequatur ut delectus natus! Esse labore quam nobis!
-                    </p>
+                    </div>
                 </Callout>
             </div>
         </div>
