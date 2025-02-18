@@ -50,7 +50,7 @@ function ThemeSwitch() {
             document.documentElement.setAttribute("data-theme", "light");
             localStorage.setItem("darkmode", "disabled");
             setTransformAmount(0);
-            setIconBackground("#F0E2B4");
+            setIconBackground("#F5CF9D");
         } else {
             document.documentElement.setAttribute("data-theme", "dark");
             localStorage.setItem("darkmode", "enabled");
@@ -59,7 +59,7 @@ function ThemeSwitch() {
         }
     }
 
-    const [iconBackground, setIconBackground] = useState("#F0E2B4");
+    const [iconBackground, setIconBackground] = useState("#F5CF9D");
     const iconContainerStyles = {
         width: "120px",
         height: "100%",

@@ -25,6 +25,7 @@
   --text-positive: #388E3C;
   --text-warning: #E65100;
   --text-negative: #D32F2F;
+  --text-disabled: #727581;
 
   /* Buttons */
   --btn-default: #D88A50;
@@ -43,6 +44,10 @@
   --icon-warning-hover: #FB8C00;
   --icon-negative: #E57373;
   --icon-negative-hover: #EF5350;
+
+  /* Icon Contrast */
+  --icon-contrast-default: #2C375C;
+  --icon-contrast-neutral: #4A3F35;
 
   /* Containers & Shadows */
   --outline: #D2A675;
@@ -76,6 +81,7 @@
   --text-positive: #66BB6A;
   --text-warning: #FB8C00;
   --text-negative: #EF5350;
+  --text-disabled: #727581;
 
   /* Buttons */
   --btn-default: #D88A50;
@@ -95,6 +101,10 @@
   --icon-negative: #EF5350;
   --icon-negative-hover: #E53935;
 
+  /* Icon Contrast */
+  --icon-contrast-default: #6982d1;
+  --icon-contrast-neutral: rgba(141, 153, 218, 0.897);
+
   /* Containers & Shadows */
   --outline: #7A6655;
   --outline-hover: #6A5649;
@@ -107,3 +117,7 @@
 .text-primary { color: var(--text-primary); }
 .btn-default { background-color: var(--btn-default); color: white; }
 .btn-default:hover { background-color: var(--btn-default-hover); } */
+
+/* --check: #4F29F0;
+    --disabled: #C3C8DE;
+    --border-radius: 10px; */

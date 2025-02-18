@@ -1,5 +1,11 @@
+h2 {
+    margin: 0;
+}
+
 .callout {
-    padding: 2rem 1rem;
+    user-select: none;
+    width: 100%;
+    padding: 1rem;
     /* background-color: var(--bg-secondary-hover); */
 }
 
@@ -7,7 +13,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
 .calloutHeader svg {

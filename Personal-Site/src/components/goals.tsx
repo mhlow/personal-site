@@ -1,5 +1,6 @@
 import Callout from "./callout/callout";
 import "./goals.css";
+import Checkbox from "./checkbox/checkbox";
 
 function Goals() {
     // Checkbox for each goal
@@ -11,11 +12,18 @@ function Goals() {
                 Goals that I wish to accomplish, whether it be short or long term.
             </p>
             <div>
-                <input type="checkbox" id="goal1" name="goal1" value="goal1"></input>
-                <label>Finish this site</label>
+                <Callout title="General" defaultOpen={true}>
+                    <div>
+                        <Checkbox defaultState="true">Learn React</Checkbox>
+                        <Checkbox>Learn Rust</Checkbox>
+                        <Checkbox>Finish Pentesterlab Subscription</Checkbox>
+                        <Checkbox>Write up notes for CTFs</Checkbox>
+                    </div>
+                </Callout>
                 <Callout title="Personal Site">
                     <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab sed perspiciatis iste eaque at id, laboriosam eos vero accusamus! Excepturi, dolores. Quidem consequatur ut delectus natus! Esse labore quam nobis!
+                        <Checkbox>Create a personal site</Checkbox>
+                        <Checkbox>Learn React</Checkbox>
                     </div>
                 </Callout>
             </div>
