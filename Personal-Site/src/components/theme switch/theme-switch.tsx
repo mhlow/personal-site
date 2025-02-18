@@ -24,9 +24,7 @@ const themeSwitchStyles = {
 
 
 function ThemeSwitch() {
-    const [iconBackground, setIconBackground] = useState("#F5CF9D");
-    const [transformAmount, setTransformAmount] = useState(0);
-
+    
     let darkmode : String | null = localStorage.getItem("darkmode");
     // console.log("darkmode is", darkmode);
     if (!darkmode) {
@@ -34,23 +32,24 @@ function ThemeSwitch() {
             // console.log("detected dark mode");
             darkmode = "enabled";
             localStorage.setItem("darkmode", "enabled");
-            setTransformAmount(0);
-            setIconBackground("#F5CF9D");
         } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
             // console.log("detected light mode");
             darkmode = "disabled";
             localStorage.setItem("darkmode", "disabled");
-            setTransformAmount(-52);
-            setIconBackground("#C0B2A4");
         }
     }
-
+    
+    
     if (darkmode === "enabled") {
         document.documentElement.setAttribute("data-theme", "dark");
     } else {
         document.documentElement.setAttribute("data-theme", "light");
     }
 
+    const [iconBackground, setIconBackground] = useState(darkmode == "enabled" ? "C0B2A4" : "#F5CF9D");
+    const [transformAmount, setTransformAmount] = useState(darkmode == "enabled" ? -52 : 0);
+    
+    
     const toggleTheme = () => {
         if (document.documentElement.getAttribute("data-theme") === "dark") {
             document.documentElement.setAttribute("data-theme", "light");
