@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import HomePage from "./pages/home"
 import Goals from "./pages/goals"
 import Notes from "./pages/notes";
+import CTFNotesAndWriteups from "./pages/CTF notes and writeups";
 import ThemeSwitch from "./components/theme switch/theme-switch";
 
 function AnimatedRoutes() {
@@ -32,6 +33,13 @@ function AnimatedRoutes() {
                     element={
                         <PageWrapper>
                             <Notes />
+                        </PageWrapper>
+                    }
+                    />
+                <Route path="/ctf-notes"
+                    element={
+                        <PageWrapper>
+                            <CTFNotesAndWriteups />
                         </PageWrapper>
                     }
                     />

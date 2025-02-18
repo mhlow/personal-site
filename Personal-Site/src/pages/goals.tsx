@@ -1,4 +1,4 @@
-import Callout from "../components/callout/callout";
+import { Callout } from "../components/callout/callout";
 import Checkbox from "../components/checkbox/checkbox";
 import "./goals.css";
 
@@ -17,12 +17,15 @@ function Goals() {
                         <Checkbox>Finish Pentesterlab Subscription</Checkbox>
                         <Checkbox>Write up notes for CTFs</Checkbox>
                         <Checkbox>Make a playable game</Checkbox>
+                        <Checkbox>Web scraping</Checkbox>
+                        <Checkbox>Zebbys idea</Checkbox>
                     </div>
                 </Callout>
                 <Callout title="Personal Site">
                     <div>
-                        <Checkbox>Create a personal site</Checkbox>
-                        <Checkbox>Learn React</Checkbox>
+                        <Checkbox>Fix nested callouts</Checkbox>
+                        <Checkbox>Figure out why open callouts close without animation</Checkbox>
+                        <Checkbox>CTF notes</Checkbox>
                     </div>
                 </Callout>
             </div>

@@ -12,6 +12,10 @@ function HomePage() {
             <AnimatedText>
                 <Link to="/goals">Goals</Link>
             </AnimatedText>
+            <br />
+            <AnimatedText>
+                <Link to="/ctf-notes">CTF Notes</Link>
+            </AnimatedText>
         </div>
     )
 }

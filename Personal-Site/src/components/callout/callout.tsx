@@ -36,4 +36,12 @@ function Callout( { title, children, defaultOpen = false } : { title: string, ch
     )
 }
 
-export default Callout;
+function AnimatedCallout( { title, children, defaultOpen = false } : { title: string, children: React.ReactNode, defaultOpen?: boolean }) {
+    return (
+        <Callout title={title} defaultOpen={defaultOpen}>
+            {children}
+        </Callout>
+    )
+}
+
+export { Callout, AnimatedCallout };
