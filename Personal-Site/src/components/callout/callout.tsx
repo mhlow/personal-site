@@ -20,7 +20,6 @@ function Callout( { title, children, defaultOpen = false } : { title: string, ch
         const resizeObserver = new ResizeObserver(() => {
             // Do what you want to do when the size of the element changes
             setHeight(ref.current?.clientHeight || 0);
-            // console.log("asdflk");
         });
         resizeObserver.observe(ref.current);
         return () => resizeObserver.disconnect(); // clean up 
