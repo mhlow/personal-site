@@ -26,6 +26,7 @@ function Goals() {
                         <Checkbox>Fix nested callouts</Checkbox>
                         <Checkbox>Figure out why open callouts close without animation</Checkbox>
                         <Checkbox>CTF notes</Checkbox>
+                        {/* https://www.youtube.com/watch?v=u1B_RA89Gxg */}
                     </div>
                 </Callout>
             </div>

@@ -4,9 +4,8 @@ h2 {
 
 .callout {
     user-select: none;
-    width: 100%;
+    width: auto;
     padding: 1rem;
-    /* background-color: var(--bg-secondary-hover); */
 }
 
 .calloutHeader {
@@ -17,6 +16,8 @@ h2 {
 
 .calloutBody {
     padding: 1rem 2rem;
+    overflow: hidden;
+    
 }
 
 .calloutHeader svg {
@@ -26,7 +27,9 @@ h2 {
 
 .calloutCollapse {
     overflow: hidden;
-    transition: height 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    /* box shadow inset left side */
+    box-shadow: inset 0.6rem 0 rgba(0, 0, 0, 0.2);
 }
 
 svg.expanded {
