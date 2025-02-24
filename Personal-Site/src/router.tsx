@@ -6,6 +6,7 @@ import Goals from "./pages/goals"
 import Notes from "./pages/notes";
 import CTFNotesAndWriteups from "./pages/CTF notes and writeups";
 import ThemeSwitch from "./components/theme switch/theme-switch";
+import Navbar from "./components/navbar/navbar";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -13,6 +14,7 @@ function AnimatedRoutes() {
 
     return (
         <>
+        <Navbar />
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 <Route path="/personal-site"

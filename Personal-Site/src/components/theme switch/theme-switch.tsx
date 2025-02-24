@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// Can add hover animations
+
 /* CSS */
 const themeSwitchStyles = {
     position: "fixed",
@@ -16,9 +18,6 @@ const themeSwitchStyles = {
     background: "var(--icon-neutral)",
     boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
     transition: "all 0.25s",
-    "&:hover": {
-        background: "rgba(0, 0, 0, 0.1)"
-    },
 } as React.CSSProperties;
 
 

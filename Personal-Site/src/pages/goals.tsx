@@ -23,12 +23,12 @@ function Goals() {
                 </Callout>
                 <Callout title="Personal Site">
                     <div>
+                        <Checkbox defaultState={true}>Figure out why open callouts close without animation</Checkbox>
                         <Checkbox><b>A BACK OR HOME BUTTON</b></Checkbox>
                         <Checkbox>Fix nested callouts</Checkbox>
-                        <Checkbox>Figure out why open callouts close without animation</Checkbox>
                         <Checkbox>CTF notes</Checkbox>
                         <Checkbox>Code Blocks</Checkbox>
-                        <Checkbox>Perhaps easter eggs?? 🤷‍♂️</Checkbox>
+                        <Checkbox>How do I put HTML comments</Checkbox>
                         {/* https://www.youtube.com/watch?v=u1B_RA89Gxg */}
                     </div>
                 </Callout>

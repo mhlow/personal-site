@@ -56,6 +56,15 @@
   --outline: #D2A675;
   --outline-hover: #C89A65;
   --shadow: rgba(0, 0, 0, 0.2);
+
+  /* Navigation */
+  --nav-bg: #52473d;
+  /* --nav-bg-hover: #F8D090;
+  --nav-bg-active: #F8D090; */
+  --nav-text-default: #bfe7e5;
+  --nav-text-hover: #93aaa9;
+  --nav-text-active: #baccff;
+  --nav-text-active-hover: #8d9ece;
 }
 
 /* ========== Dark Theme ========== */
