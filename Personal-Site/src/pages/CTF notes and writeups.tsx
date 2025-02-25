@@ -12,11 +12,15 @@ function CTFNotesAndWriteups() {
                 <br />
             </AnimatedCallout>
 
-            <AnimatedCallout title="Binary Exploitation/Pwn">
+            <AnimatedCallout title="Binary Exploitation/Reversing">
                 Ghidra Decompiler, by default already installed on Kali Linux
+                <br />
+                <a href="https://pylingual.io/">PyLingual</a> - Python decompiler
             </AnimatedCallout>
 
             <AnimatedCallout title="Crypto">
+                <b>Use John the Ripper!!!</b>
+                <br />
                 <a href="https://gchq.github.io/CyberChef/">CyberChef</a> - General encryption/decryption tool
                 <br />
                 <a href="https://cryptii.com/">Cryptii</a> - General encryption/decryption tool
@@ -26,6 +30,9 @@ function CTFNotesAndWriteups() {
                 <a href="https://planetcalc.com/8047/">PlanetCalc</a> - Monoalphabetic substitution
                 <br />
                 <a href="https://hashcat.net/wiki/doku.php?id=example_hashes">Hashcat</a> - example hashes
+                <br />
+                XOR is a commonly used component against strings.
+
                 <AnimatedCallout title="Password Cracking">
                     <a href="https://github.com/danielmiessler/SecLists">SecLists</a> - Wordlists and common passwords
                 </AnimatedCallout>
@@ -41,7 +48,12 @@ function CTFNotesAndWriteups() {
 
             <AnimatedCallout title="Images">
                 <a href="https://www.aperisolve.com/cheatsheet>">AperiSolve</a> - Steganography
-
+                <br />
+                <a href="https://georgeom.net/StegOnline/upload">StegOnline</a> - Extracting different planes from images
+                <br />
+                <a href="https://merri.cx/qrazybox/">QRazyBox</a> - QR code editor and decoder
+                <br />
+                <InlineCodeBlock>steghide extract -sf myBirb.jpg</InlineCodeBlock>
                 <AnimatedCallout title="PNGs">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, aliquam obcaecati possimus quidem temporibus provident. Eius nam corporis, tenetur quibusdam, reprehenderit autem dolorem veniam enim, quaerat obcaecati a beatae et!
                 </AnimatedCallout>
@@ -66,7 +78,7 @@ function CTFNotesAndWriteups() {
             <AnimatedCallout title="Web">
                 <Checkbox>Check local storage and cookies</Checkbox>
                 <Checkbox>Check for robots.txt and sitemap.xml</Checkbox>
-
+                <Checkbox>Check outgoing post requests with something like BurpSuite</Checkbox>
                 <br />
                 <a href="https://www.kali.org/tools/dirb/">Dirb</a> - Directory brute forcing
             </AnimatedCallout>
