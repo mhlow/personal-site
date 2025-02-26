@@ -44,16 +44,21 @@ function CTFNotesAndWriteups() {
                 <Checkbox><InlineCodeBlock>grep -i [pattern] [file]</InlineCodeBlock></Checkbox>
                 <Checkbox><InlineCodeBlock>binwalk -e [file]</InlineCodeBlock></Checkbox>
                 <Checkbox><InlineCodeBlock>exiftool [file]</InlineCodeBlock></Checkbox>
+
+                If in a linux system, we can check for other users on the system, and attempt to <InlineCodeBlock>su</InlineCodeBlock> into their account, requiring a password.
             </AnimatedCallout>
 
             <AnimatedCallout title="Images">
-                <a href="https://www.aperisolve.com/cheatsheet>">AperiSolve</a> - Steganography
+                <a href="https://www.aperisolve.com/cheatsheet">AperiSolve</a> - Steganography
                 <br />
                 <a href="https://georgeom.net/StegOnline/upload">StegOnline</a> - Extracting different planes from images
                 <br />
                 <a href="https://merri.cx/qrazybox/">QRazyBox</a> - QR code editor and decoder
                 <br />
                 <InlineCodeBlock>steghide extract -sf myBirb.jpg</InlineCodeBlock>
+                <br />
+                If stegsolve is installed, we can use <InlineCodeBlock>java -jar stegsolve.jar</InlineCodeBlock> to open the program.
+                <br />
                 <AnimatedCallout title="PNGs">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, aliquam obcaecati possimus quidem temporibus provident. Eius nam corporis, tenetur quibusdam, reprehenderit autem dolorem veniam enim, quaerat obcaecati a beatae et!
                 </AnimatedCallout>
