@@ -1,3 +1,6 @@
 poke?
 build mechanic
 mitm attack
+Sudoku solver
+square and hexagon grid animation idk
+Convolution visualiser??

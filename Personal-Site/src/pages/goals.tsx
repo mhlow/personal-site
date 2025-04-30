@@ -31,6 +31,7 @@ function Goals() {
                         <Checkbox>Code Blocks</Checkbox>
                         <Checkbox>How do I put HTML comments</Checkbox>
                         {/* https://www.youtube.com/watch?v=u1B_RA89Gxg */}
+                        <Checkbox>Make a better navbar (stackable headers? idk what its called)</Checkbox>
                     </div>
                 </Callout>
             </div>

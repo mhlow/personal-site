@@ -4,3 +4,4 @@ Will probably make some projects and show them off on this page.
 
 `npm run` to see options
 `npm run dev` to start locally
+`npm run deploy` to deploy to github pages

@@ -7,6 +7,7 @@ import Notes from "./pages/notes";
 import CTFNotesAndWriteups from "./pages/CTF notes and writeups";
 import ThemeSwitch from "./components/theme switch/theme-switch";
 import Navbar from "./components/navbar/navbar";
+import Shapes from './pages/shapes/shapes';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -42,6 +43,13 @@ function AnimatedRoutes() {
                     element={
                         <PageWrapper>
                             <CTFNotesAndWriteups />
+                        </PageWrapper>
+                    }
+                    />
+                <Route path="/personal-site/shapes"
+                    element={
+                        <PageWrapper>
+                            <Shapes />
                         </PageWrapper>
                     }
                     />

@@ -1,0 +1,9 @@
+.squareGrid {
+    /* border: 1px solid #000; */
+    /* background-color: rgb(44, 19, 8); */
+
+    display: grid;
+    grid-template-columns: repeat(24, 24px); /* Adjust cols & size */
+    grid-template-rows: repeat(24, 24px);
+    gap: 1px;
+}
