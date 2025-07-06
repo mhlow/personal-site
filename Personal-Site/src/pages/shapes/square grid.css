@@ -5,5 +5,5 @@
     display: grid;
     grid-template-columns: repeat(24, 24px); /* Adjust cols & size */
     grid-template-rows: repeat(24, 24px);
-    gap: 1px;
+    gap: 2px;
 }

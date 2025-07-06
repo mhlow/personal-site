@@ -4,3 +4,7 @@ mitm attack
 Sudoku solver
 square and hexagon grid animation idk
 Convolution visualiser??
+binary visualiser and counter
+pop bubbles
+substitution sipher solver visualiser
+amaze youtube game solver

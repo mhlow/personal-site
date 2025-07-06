@@ -3,34 +3,65 @@
     height: 24px;
     background-color: black;
     border-radius: 4px;
-    box-shadow: inset 0 0 0 2px #086083; /* Optional inset shadow for depth */
-    
+    /* box-shadow: inset 0 0 0 2px #086083; Optional inset shadow for depth */
+    transition: all 0.1s ease-in-out;
+}
+
+.square:hover {
+    cursor: pointer;
 }
 
 .square.stateDefault.userActionDefault {
-    background-color: rgb(36, 36, 214);
+    background-color: hsl(181, 59%, 68%);
 }
 
 .square.stateDefault.userActionHover {
-    background-color: rgb(50, 50, 240); /* Slightly brighter for hover */
+    background-color: hsl(181, 39%, 58%); /* Slightly brighter for hover */
 }
 
 .square.stateDefault.userActionActive {
-    background-color: rgb(20, 20, 180); /* Slightly darker for active */
+    background-color: hsl(181, 25%, 45%); /* Slightly darker for active */
 }
 
 .square.stateSelected.userActionDefault {
-    background-color: rgb(0, 200, 220); /* Brighter and more distinct from default */
+    background-color: hsl(120, 57%, 61%); /* Brighter and more distinct from default */
 }
 
 .square.stateSelected.userActionHover {
-    background-color: rgb(0, 180, 200); /* Slightly darker for hover */
+    background-color: hsl(120, 42%, 53%); /* Slightly darker for hover */
 }
 
 .square.stateSelected.userActionActive {
-    background-color: rgb(0, 140, 180); /* Even darker for active */
+    background-color: hsl(120, 31%, 42%); /* Even darker for active */
 }
 
 .square.stateDisabled {
     background-color: rgb(120, 120, 120); /* Slightly lighter for better visibility */
 }
+
+/*
+
+.square.stateDefault {
+    background-color: hsl(181, 59%, 68%); 
+}
+
+.square.stateDefault:hover {
+    background-color: hsl(181, 39%, 58%);
+
+.square.stateDefault:active {
+    background-color: hsl(181, 25%, 45%); 
+}
+
+.square.stateSelected {
+    background-color: hsl(120, 57%, 61%);
+}
+
+.square.stateSelected:hover {
+    background-color: hsl(120, 42%, 53%);
+}
+
+.square.stateSelected:active {
+    background-color: hsl(120, 31%, 42%);
+}
+
+*/

@@ -8,6 +8,7 @@ import CTFNotesAndWriteups from "./pages/CTF notes and writeups";
 import ThemeSwitch from "./components/theme switch/theme-switch";
 import Navbar from "./components/navbar/navbar";
 import Shapes from './pages/shapes/shapes';
+import NotFound from "./pages/not found";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -51,6 +52,11 @@ function AnimatedRoutes() {
                         <PageWrapper>
                             <Shapes />
                         </PageWrapper>
+                    }
+                    />
+                <Route path="*"
+                    element={
+                        <NotFound />
                     }
                     />
             </Routes>

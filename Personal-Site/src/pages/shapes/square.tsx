@@ -1,51 +1,37 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import "./square.css"
+import { SquareState, SquareUserAction } from "./square grid";
 
-function Square() {
 
-    enum SquareState {
-        Default,
-        Selected,
-        Disabled,
-    }
 
-    enum SquareUserAction {
-        Default,
-        Hover,
-        Active,
-    }
-
-    const [state, setState] = useState<SquareState>(SquareState.Default);
-    const [userAction, setUserAction] = useState<SquareUserAction>(SquareUserAction.Default);
-
-    const handleMouseEnter = () => {
-        setUserAction(SquareUserAction.Hover);
-    }
-    const handleMouseLeave = () => {
-        setUserAction(SquareUserAction.Default);
-    };
-    const handleMouseDown = () => {
-        setUserAction(SquareUserAction.Active);
-    };
-    const handleMouseUp = () => {
-        setUserAction(SquareUserAction.Hover);
-    };
-    const handleClick = () => {
-        if (state === SquareState.Default) {
-            setState(SquareState.Selected);
-        } else if (state === SquareState.Selected) {
-            setState(SquareState.Default);
-        }
-    };
-
+function Square( {
+    id, 
+    click, 
+    mouseEnter, 
+    mouseLeave, 
+    mouseDown, 
+    mouseUp, 
+    state, 
+    userAction 
+} : {
+    id: number, 
+    click: (id:number) => void, 
+    mouseEnter: (id:number) => void, 
+    mouseLeave: () => void, 
+    mouseDown: () => void, 
+    mouseUp: () => void 
+    state: SquareState,
+    userAction: SquareUserAction
+} ): ReactElement {
+    
     return (
         <div
             className={`square state${SquareState[state]} userAction${SquareUserAction[userAction]}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onClick={handleClick}
+            onMouseEnter={() => mouseEnter(id)}
+            onMouseLeave={() => mouseLeave()}
+            onMouseDown={() => mouseDown()}
+            onMouseUp={() => mouseUp()}
+            onClick={() => click(id)}
         >
         </div>
     );
