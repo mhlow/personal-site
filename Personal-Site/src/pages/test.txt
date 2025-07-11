@@ -8,3 +8,4 @@ binary visualiser and counter
 pop bubbles
 substitution sipher solver visualiser
 amaze youtube game solver
+turing machine

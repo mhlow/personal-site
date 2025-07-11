@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import "./square.css"
 import { SquareState, SquareUserAction } from "./square grid";
 

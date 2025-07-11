@@ -1,67 +1,114 @@
-.square {
-    width: 24px;
-    height: 24px;
-    background-color: black;
-    border-radius: 4px;
-    /* box-shadow: inset 0 0 0 2px #086083; Optional inset shadow for depth */
-    transition: all 0.1s ease-in-out;
-}
-
 .square:hover {
     cursor: pointer;
 }
 
-.square.stateDefault.userActionDefault {
+/* .square.stateDefault.userActionDefault {
     background-color: hsl(181, 59%, 68%);
 }
 
 .square.stateDefault.userActionHover {
-    background-color: hsl(181, 39%, 58%); /* Slightly brighter for hover */
+    background-color: hsl(181, 39%, 58%);
 }
 
 .square.stateDefault.userActionActive {
-    background-color: hsl(181, 25%, 45%); /* Slightly darker for active */
+    background-color: hsl(181, 25%, 45%);
 }
 
 .square.stateSelected.userActionDefault {
-    background-color: hsl(120, 57%, 61%); /* Brighter and more distinct from default */
-}
-
-.square.stateSelected.userActionHover {
-    background-color: hsl(120, 42%, 53%); /* Slightly darker for hover */
-}
-
-.square.stateSelected.userActionActive {
-    background-color: hsl(120, 31%, 42%); /* Even darker for active */
-}
-
-.square.stateDisabled {
-    background-color: rgb(120, 120, 120); /* Slightly lighter for better visibility */
-}
-
-/*
-
-.square.stateDefault {
-    background-color: hsl(181, 59%, 68%); 
-}
-
-.square.stateDefault:hover {
-    background-color: hsl(181, 39%, 58%);
-
-.square.stateDefault:active {
-    background-color: hsl(181, 25%, 45%); 
-}
-
-.square.stateSelected {
     background-color: hsl(120, 57%, 61%);
 }
 
-.square.stateSelected:hover {
+.square.stateSelected.userActionHover {
     background-color: hsl(120, 42%, 53%);
 }
 
-.square.stateSelected:active {
+.square.stateSelected.userActionActive {
     background-color: hsl(120, 31%, 42%);
 }
 
-*/
+.square.stateDisabled {
+    background-color: rgb(120, 120, 120);
+} */
+
+.square {
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+.square:before, .square:after {
+    border-radius: 3px;
+}
+
+.square:before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.square:after {
+    right: 2px;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    content: "";
+    position: absolute;
+    transition: all 100ms ease-out;
+}
+
+.square.userActionHover:after, .square.userActionActive:after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+/* Default */
+.square.stateDefault:before {
+    background-color: rgba(249, 58, 19, .32);
+}
+
+.square.stateDefault:after {
+    background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+.square.stateDefault.userActionHover:after {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+    transition-timing-function: ease-in;
+}
+
+.square.stateDefault.userActionActive:after {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+}
+
+/* Selected */
+.square.stateSelected:before {
+    background-color: rgba(56, 185, 17, 0.32);
+}
+
+.square.stateSelected:after {
+    background-image: linear-gradient(92.83deg, #21d490 0, #0fc460 100%);
+}
+
+.square.stateSelected.userActionHover:after {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), linear-gradient(92.83deg, #21d490 0, #0fc460 100%);
+    transition-timing-function: ease-in;
+}
+
+.square.stateSelected.userActionActive:after {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #21d490 0, #0fc460 100%);
+}
+
+.square:disabled {
+    cursor: default;
+    opacity: .24;
+}

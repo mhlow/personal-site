@@ -17,9 +17,6 @@ export enum SquareUserAction {
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array : any[]): void {
     let currentIndex = array.length;
-    // let randomValue = (((seed * 13371337) + 1) * 113025431) % 1000000007 / 1000000007;
-    // console.log(`Seed: ${seed}, Random Value: ${randomValue}`);
-
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
 
@@ -48,19 +45,20 @@ function SquareGrid({ rows, cols }: { rows: number; cols: number }) {
             // Choose random square
             let randomSquare = squares[Math.floor(Math.random() * squares.length)];
             shuffle(directions);
-            console.log(`Random Square: ${randomSquare}, Directions: ${directions}`);
             
             let squaresLength = squares.length;
             for (let direction of directions) {
                 let newSquare: number = 0;
-                if (direction === "right") {
+                if (direction === "right" && (randomSquare + 1) % cols !== 0) {
                     newSquare = randomSquare + 1;
-                } else if (direction === "left") {
+                } else if (direction === "left" && randomSquare % cols !== 0) {
                     newSquare = randomSquare - 1;
                 } else if (direction === "up") {
                     newSquare = randomSquare - cols;
                 } else if (direction === "down") {
                     newSquare = randomSquare + cols;
+                } else {
+                    continue;
                 }
                 // Check if newSquare is valid
                 if (newSquare >= 0 && newSquare < rows * cols && !squares.includes(newSquare)) {
@@ -81,9 +79,8 @@ function SquareGrid({ rows, cols }: { rows: number; cols: number }) {
     const handleMouseEnter = useCallback((id: number) => {
         // console.log(`Mouse entered square ${id}`);
         // setUserAction(SquareUserAction.Hover);
-        const newAffectedSquares = spreadSquares(id, 5);
+        const newAffectedSquares = spreadSquares(id, 3);
         setAffectedSquares(newAffectedSquares);
-        console.log(affectedSquares)
 
         setUserAction(prev => {
             const newUserAction = [...prev];
