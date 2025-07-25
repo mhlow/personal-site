@@ -10,11 +10,11 @@ import AnimatedRoutes from "./router"
 
 function App() {
 
-  return (
-    <BrowserRouter>
-      <AnimatedRoutes />
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <AnimatedRoutes />
+        </BrowserRouter>
+    )
   // const [count, setCount] = useState(0)
 
   // return (

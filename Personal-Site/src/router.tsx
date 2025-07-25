@@ -8,6 +8,7 @@ import CTFNotesAndWriteups from "./pages/CTF notes and writeups";
 import ThemeSwitch from "./components/theme switch/theme-switch";
 import Navbar from "./components/navbar/navbar";
 import Shapes from './pages/shapes/shapes';
+import Sudoku from "./pages/sudoku/sudoku";
 import NotFound from "./pages/not found";
 
 function AnimatedRoutes() {
@@ -51,6 +52,13 @@ function AnimatedRoutes() {
                     element={
                         <PageWrapper>
                             <Shapes />
+                        </PageWrapper>
+                    }
+                    />
+                <Route path="/personal-site/sudoku"
+                    element={
+                        <PageWrapper>
+                            <Sudoku />
                         </PageWrapper>
                     }
                     />
