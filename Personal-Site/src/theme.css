@@ -86,6 +86,13 @@
   --bg-negative: #B71C1C;
   --bg-negative-hover: #C62828;
   --bg-code: #000000;
+  --bg-canvas: #1d1715;
+  --bg-grey-100: #121212;
+  --bg-grey-200: #1d1d1d;
+  --bg-grey-300: #2a2a2a;
+  --bg-grey-400: #373737;
+  --bg-grey-500: #444444;
+
 
   /* Text Colors */
   --text-primary: #FCDFAA;

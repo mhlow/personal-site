@@ -1,0 +1,57 @@
+.behaviourTreeContainer {
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    border: 3px solid var(--outline);
+}
+
+.behaviourTreeMenu {
+    width: 25%;
+    height: 100%;
+    background-color: var(--bg-grey-200);
+    overflow: scroll;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#behaviourTreeCanvas {
+    width: 75%;
+    background-color: var(--bg-canvas);
+}
+
+.btNode {
+    width: 150px;
+    margin: 10px 0;
+    border: 1px solid var(--outline);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    color: var(--text-primary);
+    
+    font-size: 0.6rem;
+}
+
+.btHeader {
+    background-color: var(--bg-grey-500);
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+
+    text-align: center;
+}
+
+.btBody {
+    flex-grow: 1;
+    padding: 0 6px;
+    background-color: var(--bg-grey-300);
+    font-size: 0.5rem;
+    border-radius: 0 0 8px 8px;
+}

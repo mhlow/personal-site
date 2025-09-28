@@ -10,6 +10,7 @@ import Navbar from "./components/navbar/navbar";
 import Shapes from './pages/shapes/shapes';
 import Sudoku from "./pages/sudoku/sudoku";
 import NotFound from "./pages/not found";
+import BehaviourTreePage from "./pages/behaviour tree visual editor/behaviour tree";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -62,6 +63,13 @@ function AnimatedRoutes() {
                         </PageWrapper>
                     }
                     />
+                <Route path="/personal-site/behaviour-tree-visual-editor"
+                    element={
+                        <PageWrapper>
+                            <BehaviourTreePage />
+                        </PageWrapper>
+                    }
+                    />
                 <Route path="*"
                     element={
                         <NotFound />
@@ -77,6 +85,7 @@ function AnimatedRoutes() {
 function PageWrapper({ children }: { children: ReactNode }) {
     return (
         <motion.div 
+            style={{ height: "100%", width: "100%" }}
             // Entering the page
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
