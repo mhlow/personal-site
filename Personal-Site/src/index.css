@@ -5,19 +5,22 @@
 :root {
   font-family: "Fira Code", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
   font-size: larger;
 
-  color-scheme: light dark;
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
+  color-scheme: dark;
+  color: var(--color-content-main);
+  background-color: var(--color-bg-main);
 
-  padding-top: 3.6rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
 }
 
 a {
@@ -31,13 +34,18 @@ a:hover {
 
 html {
   transition: all 0.5s;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   display: flex;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 1.8rem;
+  /* min-width: 320px; */
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 h1 {

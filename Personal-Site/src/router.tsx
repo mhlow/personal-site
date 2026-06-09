@@ -12,13 +12,16 @@ import Sudoku from "./pages/sudoku/sudoku";
 import NotFound from "./pages/not found";
 import BehaviourTreePage from "./pages/behaviour tree visual editor/behaviour tree";
 
+import Test from "./pages/test";
+import ShipGame from "./pages/ship game/ShipGame";
+
 function AnimatedRoutes() {
     const location = useLocation();
 
 
     return (
         <>
-        <Navbar />
+        {/* <Navbar /> */}
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 <Route path="/personal-site"
@@ -70,6 +73,20 @@ function AnimatedRoutes() {
                         </PageWrapper>
                     }
                     />
+                <Route path="/personal-site/test"
+                    element={
+                        <PageWrapper>
+                            <Test />
+                        </PageWrapper>
+                    }
+                    />
+                <Route path="/personal-site/ship-game"
+                    element={
+                        <PageWrapper>
+                            <ShipGame />
+                        </PageWrapper>
+                    }
+                    />
                 <Route path="*"
                     element={
                         <NotFound />
@@ -77,7 +94,7 @@ function AnimatedRoutes() {
                     />
             </Routes>
         </AnimatePresence>
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
         </>
     )
 }
