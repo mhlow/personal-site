@@ -12,8 +12,12 @@
   --color-bg-blockquote-accent: color-mix(in srgb, var(--color-accent), transparent 10%);
   --color-content-main: oklch(94.41% 0.00357 220.89);
   
-  --color-accent: oklch(79.448% 0.13445 307.268);
-  --color-accent-content: oklch(76.562% 0.161 306.601);
+  --color-accent-primary: oklch(79.11% 0.131 305);
+  --color-accent-primary-content: oklch(73.914% 0.17475 307.268);
+  --color-accent-secondary: oklch(0.7911 0.131 47.65);
+  --color-accent-secondary-content: oklch(76.562% 0.161 47.65);
+
+  --color-bg-ship: oklch(14.039% 0.01874 265.616);
 
   --color-primary: oklch(86.133% 0.141 139.549);
   --color-primary-content: oklch(17.226% 0.028 139.549);
@@ -35,4 +39,6 @@
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
+
+  --color-debug: oklch(62.793% 0.25768 29.223);
 }

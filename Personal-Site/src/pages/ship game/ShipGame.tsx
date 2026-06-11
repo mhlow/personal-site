@@ -12,12 +12,15 @@ type ShipState = {
 const CONTROL_KEYS = new Set(["w", "a", "s", "d", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
 
 function ShipGame() {
+    // Container required because shrinking canvas size doesn't shrink actual drawing area
     const containerRef = useRef<HTMLDivElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const keysRef = useRef(new Set<string>());
     const animationFrameRef = useRef<number | null>(null);
     const shipRef = useRef<ShipState>({ x: 0, y: 0, angle: 0, vx: 0, vy: 0 });
-    const starsRef = useRef<Array<{ x: number; y: number; radius: number; alpha: number }>>([]);
+    // const starsRef = useRef<Array<{ x: number; y: number; radius: number; alpha: number }>>([]);
+    const shipImage = new Image();
+    shipImage.src = "src/assets/ship.svg";
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -33,30 +36,15 @@ function ShipGame() {
             return;
         }
 
-        const shipRadius = 18;
+        const shipRadius = 24;
         const thrust = 420;
-        const drag = 1.8;
+        const drag = 1.4;
         const maxSpeed = 320;
         const dpr = window.devicePixelRatio || 1;
 
-        const createStars = (width: number, height: number) => {
-            const stars = Array.from({ length: 48 }, (_, index) => {
-                const seed = index * 97;
-
-                return {
-                    x: (seed * 37) % width,
-                    y: (seed * 53) % height,
-                    radius: 0.8 + (index % 4) * 0.35,
-                    alpha: 0.25 + (index % 6) * 0.09,
-                };
-            });
-
-            starsRef.current = stars;
-        };
-
         const resizeCanvas = () => {
-            const width = Math.max(320, container.clientWidth);
-            const height = Math.max(360, Math.round(width * 0.62));
+            const width = Math.max(576, container.clientWidth);
+            const height = Math.max(360, container.clientHeight);
 
             canvas.style.width = `${width}px`;
             canvas.style.height = `${height}px`;
@@ -71,69 +59,74 @@ function ShipGame() {
                 vx: 0,
                 vy: 0,
             };
-
-            createStars(width, height);
         };
 
         const drawScene = (width: number, height: number, ship: ShipState, moving: boolean) => {
             context.clearRect(0, 0, width, height);
 
-            const background = context.createLinearGradient(0, 0, width, height);
-            background.addColorStop(0, "#0d1226");
-            background.addColorStop(1, "#101b33");
-            context.fillStyle = background;
-            context.fillRect(0, 0, width, height);
+            // const background = context.createLinearGradient(0, 0, width, height);
+            // background.addColorStop(0, "#0d1226");
+            // background.addColorStop(1, "#101b33");
+            // const background = rgba(0, 0, 0, 0);
+            // context.fillStyle = background;
+            // context.fillRect(0, 0, width, height);
 
-            const glow = context.createRadialGradient(width * 0.75, height * 0.2, 12, width * 0.75, height * 0.2, width * 0.45);
-            glow.addColorStop(0, "rgba(117, 193, 255, 0.16)");
-            glow.addColorStop(1, "rgba(117, 193, 255, 0)");
-            context.fillStyle = glow;
-            context.fillRect(0, 0, width, height);
+            // const glow = context.createRadialGradient(width * 0.75, height * 0.2, 12, width * 0.75, height * 0.2, width * 0.45);
+            // glow.addColorStop(0, "rgba(117, 193, 255, 0.16)");
+            // glow.addColorStop(1, "rgba(117, 193, 255, 0)");
+            // context.fillStyle = glow;
+            // context.fillRect(0, 0, width, height);
 
-            context.fillStyle = "rgba(255, 255, 255, 0.9)";
-            for (const star of starsRef.current) {
-                context.globalAlpha = star.alpha;
-                context.beginPath();
-                context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                context.fill();
-            }
+            // context.fillStyle = "rgba(255, 255, 255, 0.9)";
+            // for (const star of starsRef.current) {
+            //     context.globalAlpha = star.alpha;
+            //     context.beginPath();
+            //     context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            //     context.fill();
+            // }
             context.globalAlpha = 1;
 
             context.save();
             context.translate(ship.x, ship.y);
             context.rotate(ship.angle);
 
-            if (moving) {
-                context.fillStyle = "rgba(255, 164, 77, 0.75)";
-                context.beginPath();
-                context.moveTo(0, 24);
-                context.lineTo(-7, 38);
-                context.lineTo(0, 32);
-                context.lineTo(7, 38);
-                context.closePath();
-                context.fill();
-            }
+            // Moving animation
+            // if (moving) {
+            //     context.fillStyle = "rgba(255, 164, 77, 0.75)";
+            //     context.beginPath();
+            //     context.moveTo(0, 24);
+            //     context.lineTo(-7, 38);
+            //     context.lineTo(0, 32);
+            //     context.lineTo(7, 38);
+            //     context.closePath();
+            //     context.fill();
+            // }
 
-            context.fillStyle = "#d8e6ff";
-            context.beginPath();
-            context.moveTo(0, -20);
-            context.lineTo(13, 16);
-            context.lineTo(0, 9);
-            context.lineTo(-13, 16);
-            context.closePath();
-            context.fill();
+            // Ship
+            // use ship svg
+            context.drawImage(shipImage, -shipRadius, -shipRadius, shipRadius * 2, shipRadius * 2);
+            // context.fillStyle = "#d8e6ff";
+            // context.beginPath();
+            // context.moveTo(0, -20);
+            // context.lineTo(13, 16);
+            // context.lineTo(0, 9);
+            // context.lineTo(-13, 16);
+            // context.closePath();
+            // context.fill();
 
-            context.strokeStyle = "rgba(104, 187, 255, 0.85)";
-            context.lineWidth = 2;
-            context.stroke();
+            // context.strokeStyle = "rgba(104, 187, 255, 0.85)";
+            // context.lineWidth = 2;
+            // context.stroke();
 
-            context.fillStyle = "rgba(30, 42, 71, 0.95)";
-            context.beginPath();
-            context.ellipse(0, 3, 4, 7, 0, 0, Math.PI * 2);
-            context.fill();
+            // context.fillStyle = "rgba(30, 42, 71, 0.95)";
+            // context.beginPath();
+            // context.ellipse(0, 3, 4, 7, 0, 0, Math.PI * 2);
+            // context.fill();
+            // --
 
             context.restore();
 
+            // Grid
             context.strokeStyle = "rgba(255, 255, 255, 0.08)";
             context.lineWidth = 1;
             context.beginPath();
@@ -143,6 +136,7 @@ function ShipGame() {
             context.lineTo(width * 0.5, height);
             context.stroke();
 
+            // UI Text
             context.fillStyle = "rgba(255, 255, 255, 0.7)";
             context.font = "600 13px system-ui, sans-serif";
             context.fillText("WASD or arrow keys to move", 16, 24);
@@ -224,7 +218,7 @@ function ShipGame() {
                     ship.vy *= scale;
                 }
 
-                if (magnitude === 0 && Math.hypot(ship.vx, ship.vy) < 4) {
+                if (magnitude === 0 && Math.hypot(ship.vx, ship.vy) < 1) {
                     ship.vx = 0;
                     ship.vy = 0;
                 }
@@ -233,6 +227,7 @@ function ShipGame() {
             ship.x += ship.vx * delta;
             ship.y += ship.vy * delta;
 
+            // Wrap
             if (ship.x < -shipRadius) {
                 ship.x = width + shipRadius;
             } else if (ship.x > width + shipRadius) {
@@ -255,32 +250,30 @@ function ShipGame() {
 
         animationFrameRef.current = window.requestAnimationFrame(frame);
 
+        // 1. Disable scrolling when the component mounts
+        const originalStyle = window.getComputedStyle(document.body).overflow;
+        document.body.style.overflow = 'hidden';
+
+        
         return () => {
             resizeObserver.disconnect();
             window.removeEventListener("keydown", handleKeyDown);
             window.removeEventListener("keyup", handleKeyUp);
             window.removeEventListener("blur", handleBlur);
-
+            
             if (animationFrameRef.current !== null) {
                 window.cancelAnimationFrame(animationFrameRef.current);
             }
+            // 2. Re-enable scrolling when the component unmounts
+            document.body.style.overflow = originalStyle;
         };
+
     }, []);
 
     return (
-        <div className="ship-game">
-            <div className="ship-game__header">
-                <div>
-                    <p className="ship-game__label">Canvas prototype</p>
-                    <h2 className="ship-game__title">Ship movement test</h2>
-                </div>
-                <p className="ship-game__status">WASD or arrow keys</p>
+            <div className="ship-game-container" ref={containerRef}>
+                <canvas ref={canvasRef} className="ship-game-canvas" aria-label="Ship movement canvas" />
             </div>
-
-            <div className="ship-game__stage" ref={containerRef}>
-                <canvas ref={canvasRef} className="ship-game__canvas" aria-label="Ship movement canvas" />
-            </div>
-        </div>
     );
 }
 

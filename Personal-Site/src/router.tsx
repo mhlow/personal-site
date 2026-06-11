@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom"
 import { AnimatePresence, motion } from "framer-motion"
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import HomePage from "./pages/home"
 import Goals from "./pages/goals"
 import Notes from "./pages/notes";
@@ -14,94 +14,101 @@ import BehaviourTreePage from "./pages/behaviour tree visual editor/behaviour tr
 
 import Test from "./pages/test";
 import ShipGame from "./pages/ship game/ShipGame";
+import ShipGameButton from "./pages/ship game/ShipGameButton";
 
 function AnimatedRoutes() {
     const location = useLocation();
-
+    const [isShipGameOpen, setIsShipGameOpen] = useState(false);
+    const toggleShipGame = () => {
+        setIsShipGameOpen(prev => !prev);
+    }
 
     return (
         <>
-        {/* <Navbar /> */}
-        <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-                <Route path="/personal-site"
-                    element={ 
-                        <PageWrapper>
-                            <HomePage /> 
-                        </PageWrapper>
-                    }  
+            {/* <Navbar /> */}
+            <AnimatePresence mode="wait">
+                <Routes location={location} key={location.pathname}>
+                    <Route path="/personal-site"
+                        element={
+                            <PageWrapper>
+                                <HomePage />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/goals" 
-                    element={
-                        <PageWrapper>
-                            <Goals />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/goals"
+                        element={
+                            <PageWrapper>
+                                <Goals />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/notes" 
-                    element={
-                        <PageWrapper>
-                            <Notes />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/notes"
+                        element={
+                            <PageWrapper>
+                                <Notes />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/ctf-notes"
-                    element={
-                        <PageWrapper>
-                            <CTFNotesAndWriteups />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/ctf-notes"
+                        element={
+                            <PageWrapper>
+                                <CTFNotesAndWriteups />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/shapes"
-                    element={
-                        <PageWrapper>
-                            <Shapes />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/shapes"
+                        element={
+                            <PageWrapper>
+                                <Shapes />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/sudoku"
-                    element={
-                        <PageWrapper>
-                            <Sudoku />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/sudoku"
+                        element={
+                            <PageWrapper>
+                                <Sudoku />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/behaviour-tree-visual-editor"
-                    element={
-                        <PageWrapper>
-                            <BehaviourTreePage />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/behaviour-tree-visual-editor"
+                        element={
+                            <PageWrapper>
+                                <BehaviourTreePage />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/test"
-                    element={
-                        <PageWrapper>
-                            <Test />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/test"
+                        element={
+                            <PageWrapper>
+                                <Test />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="/personal-site/ship-game"
-                    element={
-                        <PageWrapper>
-                            <ShipGame />
-                        </PageWrapper>
-                    }
+                    <Route path="/personal-site/ship-game"
+                        element={
+                            <PageWrapper>
+                                <ShipGame />
+                            </PageWrapper>
+                        }
                     />
-                <Route path="*"
-                    element={
-                        <NotFound />
-                    }
+                    <Route path="*"
+                        element={
+                            <NotFound />
+                        }
                     />
-            </Routes>
-        </AnimatePresence>
-        {/* <ThemeSwitch /> */}
+                </Routes>
+            </AnimatePresence>
+            {/* <ThemeSwitch /> */}
+            <ShipGameButton onClick={() => toggleShipGame()} />
+            {isShipGameOpen && <ShipGame />}
+
         </>
     )
 }
 
 function PageWrapper({ children }: { children: ReactNode }) {
     return (
-        <motion.div 
+        <motion.div
             style={{ height: "100%", width: "100%" }}
             // Entering the page
             initial={{ opacity: 0, y: 20 }}

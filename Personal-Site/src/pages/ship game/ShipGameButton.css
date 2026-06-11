@@ -1,0 +1,16 @@
+.ship-game-button {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 10;
+    background-color: var(--color-bg-tertiary);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.ship-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
