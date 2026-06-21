@@ -1,6 +1,6 @@
 import { AnimatedCallout } from "../components/callout/callout";
 import Checkbox from "../components/checkbox/checkbox";
-import InlineCodeBlock from "../components/code block/code block";
+import InlineCodeBlock from "../components/code block/CodeBlock";
 
 
 // OSINT, Forensics, Web, Binary, Crypto, Pwn, Reversing, Misc, Images

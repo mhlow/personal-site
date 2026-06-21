@@ -2,7 +2,7 @@ import "./BlockQuote.css";
 
 function BlockQuote({ children }: { children: React.ReactNode }) {
     return (
-        <blockquote className="blockquote">
+        <blockquote className="block-quote">
             {children}
         </blockquote>
     )

@@ -1,6 +1,6 @@
 import BlockQuote from "../components/block quote/BlockQuote";
 import Box from "../components/box/Box";
-import ShipGame from "./ship game/ShipGame";
+import CodeBlock from "../components/code block/CodeBlock";
 import "./test.css"
 
 function Test() {
@@ -24,7 +24,15 @@ function Test() {
             <BlockQuote>
                 <p>This is a blockquote</p>
             </BlockQuote>
-            {/* <ShipGame /> */}
+            <CodeBlock>
+                <pre>
+                    <code>
+                        {`function test() {
+    console.log("This is a code block");
+}`}
+                    </code>
+                </pre>
+            </CodeBlock>
         </div>
     )
 }
