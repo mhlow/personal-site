@@ -10,7 +10,9 @@
 
   color-scheme: dark;
   color: var(--color-content-main);
-  background-color: var(--color-bg-main);
+  /* background-color: var(--color-bg-main); */
+  height: 100%;
+  width: 100%;
 
 
   font-synthesis: none;
@@ -19,32 +21,68 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 #root {
   width: 100%;
 }
 
 a {
+  color: var(--color-accent-primary);
   font-weight: 500;
-  color: #646cff;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, var(--color-accent-primary), transparent 60%);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--color-accent-light-primary);
+  text-decoration-color: var(--color-accent-light-primary);
+}
+
+a:active {
+  color: var(--color-accent-primary-content);
+}
+
+a:visited {
+  color: color-mix(in oklch, var(--color-accent-primary), oklch(27.653% 0.08041 316.16) 20%);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+html, body {
+  background:
+  radial-gradient(farthest-corner at 0% 0%, color-mix(in srgb, var(--color-bg-accent), transparent 85%) 0%, color-mix(in srgb, var(--color-bg-main), transparent 100%) 100%),
+  radial-gradient(farthest-corner at 0% 80%, color-mix(in srgb, var(--color-bg-primary), transparent 70%) 0%, color-mix(in srgb, var(--color-bg-main), transparent 70%) 100%),
+  radial-gradient(farthest-corner at 0% 0%, var(--color-bg-main) 0%, var(--color-bg-main) 100%);
 }
 
 html {
   transition: all 0.5s;
   box-sizing: border-box;
+  /* min-height: 100vh; */
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   display: flex;
   padding: 1.8rem;
   /* min-width: 320px; */
 }
+    /* radial-gradient(farthest-corner at 100% 50%, rgba(0, 128, 0, 0.25) 0%, rgba(255, 0, 0, 0.25) 100%),
+    radial-gradient(farthest-corner at 0% 50%, rgba(255, 255, 0, 0.2) 0%, rgba(0, 0, 255, 0.35) 100%) */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 

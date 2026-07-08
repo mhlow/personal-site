@@ -1,0 +1,11 @@
+.inline-code {
+    font-family: inherit;
+    font-size: 0.9em;
+    padding: 0.15em 0.4em;
+    border-radius: calc(var(--radius-box) / 2);
+    background-color: var(--color-bg-code);
+    color: var(--color-content-inline-code);
+    white-space: pre-wrap;
+    word-break: break-word;
+    vertical-align: baseline;
+}

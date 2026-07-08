@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 import BlockQuote from "../components/block quote/BlockQuote";
 import Box from "../components/box/Box";
 import CodeBlock from "../components/code block/CodeBlock";
+import InlineCode from "../components/code block/InlineCode";
 import "./test.css"
+
 
 function Test() {
     return (
@@ -24,15 +27,19 @@ function Test() {
             <BlockQuote>
                 <p>This is a blockquote</p>
             </BlockQuote>
-            <CodeBlock>
-                <pre>
-                    <code>
-                        {`function test() {
-    console.log("This is a code block");
-}`}
-                    </code>
-                </pre>
+            <p>hello there here is some code</p>
+            <CodeBlock language="ts">
+                const a = 1;\n
+                const b = 2;\n\n
+
+                console.log(a + b);
             </CodeBlock>
+            <CodeBlock language="ts">
+                {`console.log(Array.from({ length: 100 }, (_, i) => i).join(", ")); const arr = Array.from({ length: 100 }, (_, i) => i); console.log(arr.join(", ")); const arr = Array.from({ length: 100 }, (_, i) => i); console.log(arr.join(", "));`}
+            </CodeBlock>
+            <p>here is some more <InlineCode>console.log(a + b);</InlineCode></p>
+            <p>Here's a link to Google: <a href="https://www.google.com">Google</a></p>
+            <Link to="/personal-site">Home</Link>
         </div>
     )
 }

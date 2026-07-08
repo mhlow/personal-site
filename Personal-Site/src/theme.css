@@ -3,6 +3,7 @@
   --color-bg-primary: oklch(26.587% 0.04204 264.287);
   --color-bg-secondary: oklch(24.172% 0.03619 267.44);
   --color-bg-tertiary: oklch(23.27% 0.03468 266.625);
+  --color-bg-accent: oklch(0.55 0.131 305);
 
   --color-box-accent: oklch(78.764% 0.06881 228.545);
   --color-box-shadow: oklch(52.557% 0.05529 234.718);
@@ -16,8 +17,14 @@
   --color-accent-primary-content: oklch(73.914% 0.17475 307.268);
   --color-accent-secondary: oklch(0.7911 0.131 47.65);
   --color-accent-secondary-content: oklch(76.562% 0.161 47.65);
+  --color-accent-light-primary: oklch(89.11% 0.131 305);
+  --color-accent-light-primary-content: oklch(83.914% 0.17475 307.268);
 
   --color-bg-ship: oklch(14.039% 0.01874 265.616);
+
+  /* --color-bg-code: oklch(53.319% 0.25972 262.653); */
+  --color-bg-code: oklch(0.2925 0.0157 264.3);
+  --color-content-inline-code: oklch(0.7273 0.0949 63.82);
 
   --color-primary: oklch(86.133% 0.141 139.549);
   --color-primary-content: oklch(17.226% 0.028 139.549);
@@ -41,4 +48,16 @@
   --border: 1px;
 
   --color-debug: oklch(62.793% 0.25768 29.223);
+  
+  --shiki-foreground: #abb2bf;
+  --shiki-background: var(--color-bg-code);
+  --shiki-token-constant: #d19a66;
+  --shiki-token-string: #98c379;
+  --shiki-token-comment: #7f848e;
+  --shiki-token-keyword: #c678dd;
+  --shiki-token-parameter: #abb2bf;
+  --shiki-token-function: #61afef;
+  --shiki-token-string-expression: #98c379;
+  --shiki-token-punctuation: #abb2bf;
+  --shiki-token-link: #c678dd;
 }
