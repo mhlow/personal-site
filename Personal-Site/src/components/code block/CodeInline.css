@@ -1,10 +1,10 @@
-.inline-code {
-    font-family: inherit;
-    font-size: 0.9em;
+.code-inline {
+    font-family: monospace;
+    font-size: 1.2em;
     padding: 0.15em 0.4em;
     border-radius: calc(var(--radius-box) / 2);
     background-color: var(--color-bg-code);
-    color: var(--color-content-inline-code);
+    color: var(--color-content-code-inline);
     white-space: pre-wrap;
     word-break: break-word;
     vertical-align: baseline;

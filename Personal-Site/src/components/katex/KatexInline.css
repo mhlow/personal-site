@@ -1,0 +1,11 @@
+.katex-inline {
+    font-size: 1em;
+    padding: 0 0.15em;
+    color: var(--color-content-katex);
+}
+ 
+.katex-inline .katex-error {
+    color: var(--color-error);
+    text-decoration: underline wavy var(--color-error);
+    text-underline-offset: 3px;
+}

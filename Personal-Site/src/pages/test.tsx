@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import BlockQuote from "../components/block quote/BlockQuote";
 import Box from "../components/box/Box";
 import CodeBlock from "../components/code block/CodeBlock";
-import InlineCode from "../components/code block/InlineCode";
+import InlineCode from "../components/code block/CodeInline";
+import KatexBlock from "../components/katex/KatexBlock";
+import KatexInline from "../components/katex/KatexInline";
 import "./test.css"
 
 
@@ -40,6 +42,13 @@ function Test() {
             <p>here is some more <InlineCode>console.log(a + b);</InlineCode></p>
             <p>Here's a link to Google: <a href="https://www.google.com">Google</a></p>
             <Link to="/personal-site">Home</Link>
+
+            <KatexBlock content={`
+                \\text{Let } f(x) = ax^2 + bx + c   \\\\
+                f(x) = 0 \\implies x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}
+            `} />
+            <KatexBlock content="\forall x \in \mathbb{R}, \forall y \in \mathbb{R}, x^2 + y^2 = 1 \implies \exists z \in \mathbb{R}, z^2 = 1 \qquad \qquad \forall \theta \in [0, 2\pi) \land \theta \neq 0, z = \cos(\theta) \land z = \sin(\theta) \qquad \qquad f(x) = h(g(x)), g(x) = x, h(x) = x^2" />
+            <p>This is some inline KaTeX: <KatexInline content={`\\int_{a}^{b} f(x) dx`} /></p>
         </div>
     )
 }

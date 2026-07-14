@@ -1,0 +1,31 @@
+.katex-block {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem 0.6rem;
+    margin: 1rem 0;
+    /* border-radius: var(--radius-box);
+    background-color: var(--color-bg-code); */
+    color: var(--color-content-katex);
+}
+ 
+/* Center the equation when it fits, but let it scroll left-aligned
+   if it's wider than the container (long derivations, big matrices) */
+.katex-block > div {
+    width: fit-content;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ 
+.katex-block .katex-display {
+    margin: 0;
+}
+ 
+/* KaTeX renders its own error spans in red, but give them a bit more
+   visual signal so a typo doesn't quietly blend into a page of notes */
+.katex-block .katex-error {
+    color: var(--color-error);
+    text-decoration: underline wavy var(--color-error);
+    text-underline-offset: 3px;
+}
