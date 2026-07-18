@@ -1,0 +1,10 @@
+
+
+.vector-calc-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    /* border: 1px solid #ff0000; */
+}

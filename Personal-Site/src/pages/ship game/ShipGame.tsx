@@ -20,7 +20,7 @@ function ShipGame() {
     const shipRef = useRef<ShipState>({ x: 0, y: 0, angle: 0, vx: 0, vy: 0 });
     // const starsRef = useRef<Array<{ x: number; y: number; radius: number; alpha: number }>>([]);
     const shipImage = new Image();
-    shipImage.src = "src/assets/ship.svg";
+    shipImage.src = "src/pages/ship game/ship.svg";
 
     useEffect(() => {
         const canvas = canvasRef.current;

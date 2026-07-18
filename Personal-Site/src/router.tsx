@@ -1,13 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom"
-import { AnimatePresence, motion } from "framer-motion"
-import { ReactNode, useState } from "react";
+import { AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import PageWrapper from "./components/PageWrapper/PageWrapper";
+import { vectorCalculusRouter } from "./vector calculus/components/VectorCalculusRouter";
 import HomePage from "./pages/home/home"
 import Notes from "./pages/notes";
 import NotFound from "./pages/not found";
 
 import Test from "./pages/test";
+import JJ from "./pages/jj/jj";
 import ShipGame from "./pages/ship game/ShipGame";
 import ShipGameButton from "./pages/ship game/ShipGameButton";
+
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -42,6 +46,13 @@ function AnimatedRoutes() {
                             </PageWrapper>
                         }
                     />
+                    <Route path="/personal-site/jj"
+                        element={
+                            <PageWrapper>
+                                <JJ />
+                            </PageWrapper>
+                        }
+                    />
                     <Route path="/personal-site/ship-game"
                         element={
                             <PageWrapper>
@@ -49,6 +60,9 @@ function AnimatedRoutes() {
                             </PageWrapper>
                         }
                     />
+
+                    {vectorCalculusRouter}
+
                     <Route path="*"
                         element={
                             <NotFound />
@@ -63,21 +77,5 @@ function AnimatedRoutes() {
     )
 }
 
-function PageWrapper({ children }: { children: ReactNode }) {
-    return (
-        <motion.div
-            // style={{ height: "100%", width: "100%" }}
-            // Entering the page
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            // Exiting the page
-            exit={{ opacity: 0, y: -20 }}
-            // Transition Properties
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-            {children}
-        </motion.div>
-    )
-}
 
 export default AnimatedRoutes;

@@ -1,5 +1,5 @@
 import "./ShipGameButton.css";
-import shipImage from "../../assets/ship.svg";
+import shipImage from "./ship.svg";
 
 function ShipGameButton({ onClick }: { onClick: () => void }) {
     return (

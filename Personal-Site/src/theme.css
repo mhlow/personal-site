@@ -11,7 +11,12 @@
 
   --color-bg-blockquote: oklch(36.764% 0.05037 268.788 / 0.7);
   --color-bg-blockquote-accent: color-mix(in srgb, var(--color-accent-primary), transparent 10%);
+
   --color-content-main: oklch(94.41% 0.00357 220.89);
+  --color-content-primary: oklch(87.013% 0.08746 221.189);
+  --color-content-bold: oklch(75.756% 0.14489 22.046);
+  --color-content-italic: oklch(90.163% 0.0936 188.993);
+  --color-content-muted: oklch(50% 0 271.152);
   
   --color-accent-primary: oklch(79.11% 0.131 305);
   --color-accent-primary-content: oklch(73.914% 0.17475 307.268);
