@@ -1,9 +1,11 @@
 .font-bold {
     color: var(--color-content-bold);
+    font-weight: bold;
 }
 
 .font-italic {
-    color: var(--color-content-italic);
+    /* color: var(--color-content-italic); */
+    font-style: italic;
 }
 
 .font-underline {
