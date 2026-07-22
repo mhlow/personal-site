@@ -1,9 +1,5 @@
-
-
-// import "./MathGraph.css";
 import { useEffect, useId, useRef } from "react";
 import JXG from "jsxgraph";
-// import "jsxgraph/distrib/jsxgraph.css";
 
 function XSquaredGraph() {
     const containerId = `jxg-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;

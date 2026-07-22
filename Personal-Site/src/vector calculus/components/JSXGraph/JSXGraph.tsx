@@ -1,89 +1,81 @@
+import "./JSXGraph.css";
 import { useEffect, useId, useRef } from "react";
 import JXG from "jsxgraph";
-import "jsxgraph/distrib/jsxgraph.css";
 
-interface UseJSXGraphBoardOptions {
+interface JSXGraphBoardOptions {
+    height?: number;
+    width?: number;
     boundingBox?: [number, number, number, number];
     keepAspectRatio?: boolean;
-    axisColor?: string;
+    axis?: boolean;
     showGrid?: boolean;
     pan?: boolean;
     zoom?: boolean;
-    // Called once with the initialized board — do whatever you want here:
-    // board.create(...) for 2D, view3d + functiongraph3d for 3D, sliders,
-    // vector fields, animation loops, anything JSXGraph supports.
-    // Return an optional extra cleanup function (e.g. to stop an animation
-    // loop) if your setup needs more than just freeing the board.
     setup: (board: JXG.Board) => void | (() => void);
 }
 
 function JSXGraphBoard({
+    height = 24,
+    width,
     boundingBox = [-10, 10, 10, -10],
-    keepAspectRatio = false,
-    axisColor = "#abb2bf",
+    keepAspectRatio = true,
+    axis = true,
     showGrid = false,
     pan = true,
     zoom = true,
     setup,
-}: UseJSXGraphBoardOptions) {
+}: JSXGraphBoardOptions) {
     const containerId = `jxg-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Locked in at mount — this hook is for hardcoded graphs, so refs (not
-    // the props directly) are read inside the effect. That way a parent
-    // re-render passing new object/array literals doesn't tear down and
-    // rebuild the whole JSXGraph board on every render.
-    const setupRef = useRef(setup);
-    const boundingBoxRef = useRef(boundingBox);
-    const keepAspectRatioRef = useRef(keepAspectRatio);
-    const axisColorRef = useRef(axisColor);
-    const showGridRef = useRef(showGrid);
-    const panRef = useRef(pan);
-    const zoomRef = useRef(zoom);
+    const axisColor = "#abb2bf"; // Default axis color
 
     useEffect(() => {
         if (!containerRef.current) return;
 
         const board = JXG.JSXGraph.initBoard(containerId, {
-            boundingbox: boundingBoxRef.current,
-            axis: true,
-            grid: showGridRef.current,
-            keepAspectRatio: keepAspectRatioRef.current,
+            boundingbox: boundingBox,
+            axis: axis,
+            grid: showGrid,
+            keepAspectRatio: keepAspectRatio,
             showCopyright: false,
             showNavigation: false,
-            pan: { enabled: panRef.current, needShift: false },
-            zoom: zoomRef.current,
+            pan: { enabled: pan, needShift: false },
+            zoom: zoom,
             resize: { enabled: true, throttle: 100 },
             defaultAxes: {
                 x: {
-                    strokeColor: axisColorRef.current,
-                    ticks: {
-                        strokeColor: axisColorRef.current,
-                        label: { strokeColor: axisColorRef.current },
-                    },
+                    strokeColor: axisColor,
+                    ticks: { strokeColor: axisColor, label: { strokeColor: axisColor } },
                 },
                 y: {
-                    strokeColor: axisColorRef.current,
-                    ticks: {
-                        strokeColor: axisColorRef.current,
-                        label: { strokeColor: axisColorRef.current },
-                    },
+                    strokeColor: axisColor,
+                    ticks: { strokeColor: axisColor, label: { strokeColor: axisColor } },
                 },
             },
         });
 
-        const extraCleanup = setupRef.current(board);
+        // User defined setup function to add elements to the board
+        setup(board);
 
         return () => {
-            if (typeof extraCleanup === "function") {
-                extraCleanup();
-            }
             JXG.JSXGraph.freeBoard(board);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [containerId]);
 
-    return { containerId, containerRef };
+    return (
+        <>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+            <div className="jsxgraph-container">
+                <div
+                    id={containerId}
+                    ref={containerRef}
+                    className="jxgbox math-graph-board aa"
+                    style={{ width: width ? `${width}rem` : "100%", height: `${height}rem` }}
+                />
+            </div>
+        </>
+    );
 }
 
 export default JSXGraphBoard;
