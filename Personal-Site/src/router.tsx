@@ -25,35 +25,35 @@ function AnimatedRoutes() {
             {/* <Navbar /> */}
             <AnimatePresence mode="wait">
                 <Routes location={location} key={location.pathname}>
-                    <Route path="/personal-site"
+                    <Route path="/"
                         element={
                             <PageWrapper>
                                 <HomePage />
                             </PageWrapper>
                         }
                     />
-                    <Route path="/personal-site/notes"
+                    <Route path="/notes"
                         element={
                             <PageWrapper>
                                 <Notes />
                             </PageWrapper>
                         }
                     />
-                    <Route path="/personal-site/test"
+                    <Route path="/test"
                         element={
                             <PageWrapper>
                                 <Test />
                             </PageWrapper>
                         }
                     />
-                    <Route path="/personal-site/jj"
+                    <Route path="/jj"
                         element={
                             <PageWrapper>
                                 <JJ />
                             </PageWrapper>
                         }
                     />
-                    <Route path="/personal-site/ship-game"
+                    <Route path="/ship-game"
                         element={
                             <PageWrapper>
                                 <ShipGame />

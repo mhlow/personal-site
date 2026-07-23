@@ -41,7 +41,7 @@ function Test() {
             </CodeBlock>
             <p>here is some more <InlineCode>console.log(a + b);</InlineCode></p>
             <p>Here's a link to Google: <a href="https://www.google.com">Google</a></p>
-            <Link to="/personal-site">Home</Link>
+            <Link to="/">Home</Link>
 
             <KatexBlock content={`
                 \\text{Let } f(x) = ax^2 + bx + c   \\\\

@@ -1,7 +1,6 @@
 import "../JSXGraph/JSXGraph.css";
 import { useEffect, useId, useRef } from "react";
 import JXG from "jsxgraph";
-import { label } from "framer-motion/m";
 
 // Reference: https://jsxgraph.uni-bayreuth.de/share/example/3d-function-graph-assessment [22/07/2026]
 
@@ -47,7 +46,7 @@ function JSXGraphBoard3D({
     const containerId = `jxg-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const axisColor = "#abb2bf"; // Default axis color for the flat board (if axis is enabled)
+    // const axisColor = "#abb2bf";
 
     useEffect(() => {
         if (!containerRef.current) return;

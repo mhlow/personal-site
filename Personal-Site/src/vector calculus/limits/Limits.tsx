@@ -302,7 +302,7 @@ function Limits() {
                     I won't prove it here, but there's a method if you let <KatexInline content="y = -x + x^2" />, which I implore you to try.
                 </ExampleBox>
             </div>
-            <NextPage backURL="/personal-site/vector-calculus/introduction" backLabel="Introduction" nextURL="/personal-site/vector-calculus/proving-limits" nextLabel="Proving Limits" />
+            <NextPage backURL="/vector-calculus/introduction" backLabel="Introduction" nextURL="/vector-calculus/proving-limits" nextLabel="Proving Limits" />
         </div >
     )
 }

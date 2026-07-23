@@ -10,7 +10,7 @@ import Limits from "../limits/Limits";
 import ProvingLimits from "../limits/ProvingLimits";
 import Continuity from "../continuity/Continuity";
 
-const basePath = "/personal-site/vector-calculus";
+const basePath = "/vector-calculus";
 
 function wrap(page: ReactNode) {
     return (

@@ -1,14 +1,14 @@
 import NextPage from "../components/PageNavigation";
-import { Bold, Italic } from "../../components/font styles/font styles";
+// import { Bold, Italic } from "../../components/font styles/font styles";
 import KatexBlock from "../../components/katex/KatexBlock";
 import KatexInline from "../../components/katex/KatexInline";
 import Box from "../../components/box/Box";
-import JSXGraphBoard3D, { sliderAttr, elAttr } from "../components/JSXGraph3D/JSXGraph3D";
+// import JSXGraphBoard3D, { sliderAttr, elAttr } from "../components/JSXGraph3D/JSXGraph3D";
 import ExampleBox from "../components/ExampleBox";
 
 function ProvingLimits() {
-    const xLineColor = "#987ad5";
-    const yLineColor = "#db598e";
+    // const xLineColor = "#987ad5";
+    // const yLineColor = "#db598e";
 
     return (
         <div className="vector-calc-container">
@@ -49,7 +49,7 @@ function ProvingLimits() {
                     Hence, by the Sandwich/Squeeze Theorem, the limit approaches <KatexInline content="0" />.
                 </ExampleBox>
             </div>
-            <NextPage backURL="/personal-site/vector-calculus/Limits" backLabel="Limits" nextURL="/personal-site/vector-calculus/continuity" nextLabel="Continuity" />
+            <NextPage backURL="/vector-calculus/Limits" backLabel="Limits" nextURL="/vector-calculus/continuity" nextLabel="Continuity" />
         </div >
     )
 }

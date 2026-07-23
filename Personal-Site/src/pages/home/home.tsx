@@ -11,8 +11,9 @@ function HomePage() {
             so that I can fully understand the underlying concepts of React.
             <br /><br />
 
-            <Link to="/personal-site/test">Test page</Link>
-
+            <Link to="/test">Test page</Link>
+            <br />
+            <Link to="/vector-calculus/introduction">Vector Calculus Introduction</Link>
             <br />
         </div>
     )

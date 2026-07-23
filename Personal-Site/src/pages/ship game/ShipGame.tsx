@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./ShipGame.css";
+import shipImage from "./ship.svg";
 
 type ShipState = {
     x: number;
@@ -19,12 +20,17 @@ function ShipGame() {
     const animationFrameRef = useRef<number | null>(null);
     const shipRef = useRef<ShipState>({ x: 0, y: 0, angle: 0, vx: 0, vy: 0 });
     // const starsRef = useRef<Array<{ x: number; y: number; radius: number; alpha: number }>>([]);
-    const shipImage = new Image();
-    shipImage.src = "src/pages/ship game/ship.svg";
+    const shipImageRef = useRef<HTMLImageElement | null>(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const container = containerRef.current;
+        const img = new Image();
+        img.src = shipImage;
+
+        img.onload = () => {
+            shipImageRef.current = img;
+        };
 
         if (!canvas || !container) {
             return;
@@ -61,7 +67,7 @@ function ShipGame() {
             };
         };
 
-        const drawScene = (width: number, height: number, ship: ShipState, moving: boolean) => {
+        const drawScene = (width: number, height: number, ship: ShipState, _moving: boolean) => {
             context.clearRect(0, 0, width, height);
 
             // const background = context.createLinearGradient(0, 0, width, height);
@@ -104,7 +110,7 @@ function ShipGame() {
 
             // Ship
             // use ship svg
-            context.drawImage(shipImage, -shipRadius, -shipRadius, shipRadius * 2, shipRadius * 2);
+            context.drawImage(img, -shipRadius, -shipRadius, shipRadius * 2, shipRadius * 2);
             // context.fillStyle = "#d8e6ff";
             // context.beginPath();
             // context.moveTo(0, -20);
@@ -254,13 +260,13 @@ function ShipGame() {
         const originalStyle = window.getComputedStyle(document.body).overflow;
         document.body.style.overflow = 'hidden';
 
-        
+
         return () => {
             resizeObserver.disconnect();
             window.removeEventListener("keydown", handleKeyDown);
             window.removeEventListener("keyup", handleKeyUp);
             window.removeEventListener("blur", handleBlur);
-            
+
             if (animationFrameRef.current !== null) {
                 window.cancelAnimationFrame(animationFrameRef.current);
             }
@@ -271,9 +277,9 @@ function ShipGame() {
     }, []);
 
     return (
-            <div className="ship-game-container" ref={containerRef}>
-                <canvas ref={canvasRef} className="ship-game-canvas" aria-label="Ship movement canvas" />
-            </div>
+        <div className="ship-game-container" ref={containerRef}>
+            <canvas ref={canvasRef} className="ship-game-canvas" aria-label="Ship movement canvas" />
+        </div>
     );
 }
 

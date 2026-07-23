@@ -10,7 +10,7 @@ import AnimatedRoutes from "./router"
 function App() {
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/personal-site">
             <AnimatedRoutes />
         </BrowserRouter>
     )
