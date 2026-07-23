@@ -1,6 +1,5 @@
 import NextPage from "../components/PageNavigation";
 import { Bold, Italic } from "../../components/font styles/font styles";
-import TestGraph from "./TestGraph";
 
 function Introduction() {
     return (

@@ -7,7 +7,6 @@ import { label } from "framer-motion/m";
 
 interface JSXGraphBoard3DOptions {
     height?: number;
-    width?: number;
     // The x/y/z ranges of the 3D scene, e.g. [[-5,5],[-5,5],[-5,5]].
     boundingBox3D?: [[number, number], [number, number], [number, number]];
     // Where the 3D view sits within the flat board's own coordinate space:
@@ -30,7 +29,6 @@ interface JSXGraphBoard3DOptions {
 
 function JSXGraphBoard3D({
     height = 24,
-    width,
     boundingBox3D = [
         [-5, 5],
         [-5, 5],
@@ -57,7 +55,7 @@ function JSXGraphBoard3D({
         const board = JXG.JSXGraph.initBoard(containerId, {
             // Fixed canvas the 3D viewport is placed on — the actual scene
             // ranges come from boundingBox3D below, not from this value.
-            boundingbox: [-10, 10, 10, -10],
+            boundingbox: [-20, 10, 20, -10],
             keepAspectRatio: keepAspectRatio,
             showCopyright: false,
             showNavigation: false,
@@ -76,8 +74,8 @@ function JSXGraphBoard3D({
             trackball: { enabled: false }, // Lowkey feels janky
 
             // Default axes are fine
-            xAxis: { 
-                visible: axis, 
+            xAxis: {
+                visible: axis,
                 name: 'x',
                 withLabel: true,
                 label: {
@@ -86,12 +84,12 @@ function JSXGraphBoard3D({
                     `
                 }
             },
-            yAxis: { 
+            yAxis: {
                 visible: axis,
                 name: 'y',
                 withLabel: true,
             },
-            zAxis: { 
+            zAxis: {
                 visible: axis,
                 name: 'z',
                 withLabel: true,
@@ -130,7 +128,8 @@ function JSXGraphBoard3D({
                     id={containerId}
                     ref={containerRef}
                     className="jxgbox math-graph-board"
-                    style={{ width: width ? `${width}rem` : "100%", height: `${height}rem` }}
+                    // style={{ width: height ? `${height * 2}rem` : "100%", height: `${height}rem` }}
+                    style={{ width: "100%", height: `${height}rem` }}
                 />
             </div>
         </>
@@ -138,3 +137,81 @@ function JSXGraphBoard3D({
 }
 
 export default JSXGraphBoard3D;
+
+function sliderAttr(color: string = "#aaaaaa") {
+    let slA = {
+        layer: 8,
+        // Background of the underlying slider
+        baseline: {
+            highlight: false,
+            strokeWidth: 16,
+            lineCap: 'round',
+            strokeColor: '#eeeef3'
+        },
+        point1: { fixed: true },
+        point2: { fixed: true },
+        drawLabel: true,
+        face: 'o',
+        fillColor: color,
+        highlightFillColor: color,
+        highlightStrokeColor: color,
+        highlightStrokeWidth: 5,
+        // Background of the over slider
+        highline: {
+            highlight: false,
+            strokeWidth: 16,
+            lineCap: 'round',
+            strokeColor: '#dddddd'
+        },
+        // idk
+        label: {
+            strokeColor: '#aaaaaa',
+            anchorX: 'left',
+            anchorY: 'middle',
+            layer: 0,
+            cssStyle: 'border: 0px solid red; padding: 1px 8px 1px 8px; border-radius: 20px;background-color: #f2f2f2',
+        },
+        // The button
+        size: 7,
+        snapValueDistance: 0.1,
+        snapWidth: 0.001,
+        strokeColor: '#888888',
+        strokeWidth: 0,
+
+        ticks: {
+            layer: 7,
+            digits: 2,
+            maxLabelLength: 2,
+            majorHeight: 0,
+            majorTickEndings: [1, 1],
+            strokeWidth: 4,
+            strokeColor: '#cccccc',
+        },
+        visible: true
+    };
+    return slA;
+}
+
+function elAttr(backgroundColor: string = '#f2f2f2', labelColor: string = '#aaaaaa') {
+    let elA = {
+        label: {
+            //display: 'internal',
+            rotate: 0,
+            strokeColor: labelColor,
+            anchorX: 'left',
+            anchorY: 'middle',
+            layer: 7,
+            cssStyle: `
+                    border: 0px solid red;
+                    padding: 1px 8px 1px 8px;
+                    margin-left: 10px;
+                    border-radius: 20px;
+                    background-color: ${backgroundColor};
+                    white-space: nowrap;
+                `
+        }
+    }
+    return elA;
+}
+
+export { sliderAttr, elAttr };

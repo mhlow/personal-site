@@ -7,6 +7,7 @@ import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Contents from "../contents/Contents";
 import Introduction from "../introduction/Introduction";
 import Limits from "../limits/Limits";
+import ProvingLimits from "../limits/ProvingLimits";
 import Continuity from "../continuity/Continuity";
 
 const basePath = "/personal-site/vector-calculus";
@@ -23,6 +24,7 @@ const pages = [
     ["", <Contents />],
     ["introduction", <Introduction />],
     ["limits", <Limits />],
+    ["proving-limits", <ProvingLimits />],
     ["continuity", <Continuity />],
 ]
 

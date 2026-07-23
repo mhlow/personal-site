@@ -3,7 +3,7 @@
     border-radius: var(--radius-box);
     border: var(--border) solid var(--color-accent-secondary);
     padding: 1rem;
-    margin: 1rem;
+    margin: 2rem 5rem;
 
     box-shadow: -2px 2px 5px color-mix(in oklch, var(--color-accent-secondary), transparent 60%);
 }
