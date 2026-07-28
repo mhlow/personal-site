@@ -9,6 +9,7 @@ import Introduction from "../introduction/Introduction";
 import Limits from "../limits/Limits";
 import ProvingLimits from "../limits/ProvingLimits";
 import Continuity from "../continuity/Continuity";
+import Differentiability from "../differentiability/Differentiability";
 
 const basePath = "/vector-calculus";
 
@@ -20,14 +21,17 @@ function wrap(page: ReactNode) {
     )
 }
 
-const pages = [
-    ["", <Contents />],
-    ["introduction", <Introduction />],
-    ["limits", <Limits />],
-    ["proving-limits", <ProvingLimits />],
-    ["continuity", <Continuity />],
+const pages: Array<[string, string, ReactNode]> = [
+    ["Contents", "", <Contents />],
+    ["Introduction", "introduction", <Introduction />],
+    ["Limits", "limits", <Limits />],
+    ["Proving Limits", "proving-limits", <ProvingLimits />],
+    ["Continuity", "continuity", <Continuity />],
+    ["Differentiability", "differentiability", <Differentiability />],
 ]
 
-export const vectorCalculusRouter = pages.map(([path, page]) => (
+export const vectorCalculusRouter = pages.map(([_title, path, page]) => (
     <Route path={`${basePath}/${path}`} element={wrap(page)} key={`${basePath}/${path}`} />
 ));
+
+export { pages as vectorCalculusPages };

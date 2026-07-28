@@ -1,5 +1,5 @@
 import NextPage from "../components/PageNavigation";
-// import { Bold, Italic } from "../../components/font styles/font styles";
+import { Bold } from "../../components/font styles/font styles";
 import KatexBlock from "../../components/katex/KatexBlock";
 import KatexInline from "../../components/katex/KatexInline";
 import Box from "../../components/box/Box";
@@ -15,7 +15,7 @@ function ProvingLimits() {
             <div className="limits-content">
                 <h1>Proving Limits</h1>
 
-                The only method we have to definitely prove a limit in this course is through the Sandwich/Squeeze Theorem.
+                The only method we have to definitely prove a limit in this course is through the <Bold>Sandwich/Squeeze Theorem</Bold>.
                 <Box header="Sandwich/Squeeze Theorem">
                     Suppose for a limit point <KatexInline content="(x, y)" /> near <KatexInline content="(a, b)" />,
                     that <KatexInline content="f" />,  <KatexInline content="g" /> and <KatexInline content="h" /> are functions such that
@@ -48,8 +48,19 @@ function ProvingLimits() {
                     `} />
                     Hence, by the Sandwich/Squeeze Theorem, the limit approaches <KatexInline content="0" />.
                 </ExampleBox>
+
+                <ExampleBox header={
+                    <>
+                        Find
+                        <KatexBlock content={`\\lim_{(x, y) \\to (0, 0)} \\frac{x^4y^6}{(x^2 + y^6)^2}`} />
+                    </>
+                }
+                    openByDefault={false}>
+                    Try it youself, can ask me for solution.
+                    More difficult that the others.
+                    </ExampleBox>
             </div>
-            <NextPage backURL="/vector-calculus/Limits" backLabel="Limits" nextURL="/vector-calculus/continuity" nextLabel="Continuity" />
+            <NextPage backURL="/vector-calculus/limits" backLabel="Limits" nextURL="/vector-calculus/continuity" nextLabel="Continuity" />
         </div >
     )
 }
