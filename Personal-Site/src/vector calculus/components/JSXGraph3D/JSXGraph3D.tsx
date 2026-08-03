@@ -4,6 +4,20 @@ import JXG from "jsxgraph";
 
 // Reference: https://jsxgraph.uni-bayreuth.de/share/example/3d-function-graph-assessment [22/07/2026]
 
+const vectorColor = [
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+]
+
+const curveColor = [
+    "#987ad5",
+    "#db598e",
+    "#ea9148",
+]
+
+export { vectorColor, curveColor };
+
 interface JSXGraphBoard3DOptions {
     height?: number;
     // The x/y/z ranges of the 3D scene, e.g. [[-5,5],[-5,5],[-5,5]].
@@ -19,6 +33,9 @@ interface JSXGraphBoard3DOptions {
     axis?: boolean;
     pan?: boolean;
     zoom?: boolean;
+    planeRear?: [boolean, boolean, boolean];
+    planeFront?: [boolean, boolean, boolean];
+    planes?: [boolean, boolean, boolean];
     // Called once with the initialized board AND the view3d — 3D content
     // (functiongraph3d, curve3d, point3d, etc.) is created via
     // view.create(...), not board.create(...). Still receiving board too
@@ -41,12 +58,69 @@ function JSXGraphBoard3D({
     axis = true,
     pan = false,
     zoom = false,
+    planeRear = [false, false, false],
+    planeFront = [false, false, false],
+    planes = [false, false, true],
     setup,
 }: JSXGraphBoard3DOptions) {
     const containerId = `jxg-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // const axisColor = "#abb2bf";
+    const planeColors = "#1f77b4";
+
+    // Global options
+    JXG.Options.text.useMathJax = true;
+    (JXG.Options as any).line3d.strokeWidth = 2;
+    (JXG.Options as any).line3d.strokeColor = "#1d3557";
+
+    function setUpPlanes(_board: JXG.Board, view: JXG.View3D, planes: boolean[]) {
+
+        // xy Plane
+        if (planes[2]) {
+            view.create('plane3d', [
+                [0, 0, 0],         // Origin point on the plane
+                [1, 0, 0],         // Direction vector 1 (x-axis span)
+                [0, 1, 0],         // Direction vector 2 (y-axis span)
+                [boundingBox3D[0][0], boundingBox3D[0][1]],           // Range for u (x-direction bounds)
+                [boundingBox3D[1][0], boundingBox3D[1][1]]            // Range for v (y-direction bounds)
+            ], {
+                fillColor: planeColors,
+                fillOpacity: 0.3,
+                mesh3d: { visible: true }
+            });
+        }
+
+        // xz Plane
+        if (planes[1]) {
+            view.create('plane3d', [
+                [0, 0, 0],         // Origin point on the plane
+                [0, 1, 0],         // Direction vector 1 (x-axis span)
+                [1, 0, 0],         // Direction vector 2 (y-axis span)
+                [boundingBox3D[0][0], boundingBox3D[0][1]],           // Range for u (x-direction bounds)
+                [boundingBox3D[2][0], boundingBox3D[2][1]]            // Range for v (y-direction bounds)
+            ], {
+                fillColor: planeColors,
+                fillOpacity: 0.3,
+                mesh3d: { visible: true }
+            });
+        }
+
+        // yz Plane
+        if (planes[0]) {
+            view.create('plane3d', [
+                [0, 0, 0],         // Origin point on the plane
+                [0, 1, 0],         // Direction vector 1 (x-axis span)
+                [1, 0, 0],         // Direction vector 2 (y-axis span)
+                [boundingBox3D[1][0], boundingBox3D[1][1]],           // Range for u (x-direction bounds)
+                [boundingBox3D[2][0], boundingBox3D[2][1]]            // Range for v (y-direction bounds)
+            ], {
+                fillColor: planeColors,
+                fillOpacity: 0.3,
+                mesh3d: { visible: true }
+            });
+        }
+    }
+
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -62,6 +136,7 @@ function JSXGraphBoard3D({
             zoom: zoom,
         });
 
+
         const view: JXG.View3D = board.create("view3d", [
             view3DPosition[0],
             view3DPosition[1],
@@ -75,44 +150,45 @@ function JSXGraphBoard3D({
             // Default axes are fine
             xAxis: {
                 visible: axis,
-                name: 'x',
+                name: '$$x$$',
                 withLabel: true,
-                label: {
-                    cssStyle: `
-                        font-weight: bold;
-                    `
-                }
+                useMathJax: true,
             },
             yAxis: {
                 visible: axis,
-                name: 'y',
+                name: '$$y$$',
                 withLabel: true,
+                useMathJax: true,
             },
             zAxis: {
                 visible: axis,
-                name: 'z',
+                name: '$$z$$',
                 withLabel: true,
+                useMathJax: true,
             },
 
 
             xPlaneRear: {
-                visible: true,
+                visible: planeRear[0],
                 // mesh3d: { visible: false },
                 // fillColor: "#ffffff",
             },
             yPlaneRear: {
-                visible: true,
+                visible: planeRear[1],
                 // strokeColor: "#ffffff",
                 // fillColor: "#ffffff",
             },
-            zPlaneRear: { visible: true },
-            xPlaneFront: { visible: false },
-            yPlaneFront: { visible: false },
-            zPlaneFront: { visible: false },
+            zPlaneRear: { visible: planeRear[2] },
+            xPlaneFront: { visible: planeFront[0] },
+            yPlaneFront: { visible: planeFront[1] },
+            zPlaneFront: { visible: planeFront[2] },
         } as JXG.View3DAttributes);
 
         // User defined setup function to add elements to the board/view
         setup(board, view);
+
+        // Custom setup options
+        setUpPlanes(board, view, planes);
 
         return () => {
             JXG.JSXGraph.freeBoard(board);
@@ -122,6 +198,7 @@ function JSXGraphBoard3D({
     return (
         <>
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+
             <div className="jsxgraph-container">
                 <div
                     id={containerId}
@@ -137,7 +214,7 @@ function JSXGraphBoard3D({
 
 export default JSXGraphBoard3D;
 
-function sliderAttr(color: string = "#aaaaaa") {
+function sliderAttr(color: number = 0) {
     let slA = {
         layer: 8,
         // Background of the underlying slider
@@ -147,13 +224,13 @@ function sliderAttr(color: string = "#aaaaaa") {
             lineCap: 'round',
             strokeColor: '#eeeef3'
         },
-        point1: { fixed: true },
-        point2: { fixed: true },
+        point1: { fixed: true, frozen: true },
+        point2: { fixed: true, frozen: true },
         drawLabel: true,
         face: 'o',
-        fillColor: color,
-        highlightFillColor: color,
-        highlightStrokeColor: color,
+        fillColor: curveColor[color],
+        highlightFillColor: curveColor[color],
+        highlightStrokeColor: curveColor[color],
         highlightStrokeWidth: 5,
         // Background of the over slider
         highline: {
@@ -191,7 +268,7 @@ function sliderAttr(color: string = "#aaaaaa") {
     return slA;
 }
 
-function elAttr(backgroundColor: string = '#f2f2f2', labelColor: string = '#aaaaaa') {
+function elAttr(color: number = 0, labelColor: string = '#222222') {
     let elA = {
         label: {
             //display: 'internal',
@@ -205,7 +282,7 @@ function elAttr(backgroundColor: string = '#f2f2f2', labelColor: string = '#aaaa
                     padding: 1px 8px 1px 8px;
                     margin-left: 10px;
                     border-radius: 20px;
-                    background-color: ${backgroundColor};
+                    background-color: ${curveColor[color]};
                     white-space: nowrap;
                 `
         }

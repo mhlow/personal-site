@@ -103,3 +103,11 @@ h1 {
 .test2 {
   border: #ff0000 1px solid;
 }
+
+h1 {
+  color: var(--color-accent-primary-content);
+}
+
+h2 {
+  color: var(--color-accent-secondary-content);
+}

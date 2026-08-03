@@ -191,8 +191,8 @@ function Differentiability() {
 						], {
 							strokeOpacity: 0.4,
 							fillOpacity: 0.6,
-							stepsU: 40,
-							stepsV: 40,
+							stepsU: 50,
+							stepsV: 50,
 						});
 
 						// --- Draggable point ---
@@ -237,6 +237,7 @@ function Differentiability() {
 							fillOpacity: 1,
 							fillColor: "#2a9d8f",
 							strokeColor: "#2a9d8f",
+							mesh3d: { visible: false },
 							// stepsU: 1,
 							// stepsV: 1,
 						} as JXG.Plane3DAttributes);
@@ -255,11 +256,10 @@ function Differentiability() {
 						view.create("line3d", [P, Ntip], {
 							straightFirst: false,
 							straightLast: false,
-							strokeColor: "#1d3557",
-							strokeWidth: 2,
 							lastArrow: true,
-							name: "∇f",
+							name: "$$\\nabla f$$",
 							withLabel: true,
+							useMathJax: true,
 						} as JXG.Line3DAttributes);
 					}}
 				/>
@@ -283,7 +283,7 @@ function Differentiability() {
 
 
 			</div>
-			<NextPage backURL="/vector-calculus/continuity" backLabel="Continuity" nextURL="/vector-calculus" nextLabel="" />
+			<NextPage backURL="/vector-calculus/continuity" backLabel="Continuity" nextURL="/vector-calculus/multivariable-functions" nextLabel="Multivariable Functions" />
 		</div>
 	)
 }

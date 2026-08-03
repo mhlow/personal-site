@@ -3,12 +3,12 @@ import { Bold, Italic } from "../../components/font styles/font styles";
 import KatexBlock from "../../components/katex/KatexBlock";
 import KatexInline from "../../components/katex/KatexInline";
 import Box from "../../components/box/Box";
-import JSXGraphBoard3D, { sliderAttr, elAttr } from "../components/JSXGraph3D/JSXGraph3D";
+import JSXGraphBoard3D, { sliderAttr, elAttr, curveColor } from "../components/JSXGraph3D/JSXGraph3D";
 import ExampleBox from "../components/ExampleBox";
 
 function Limits() {
-    const xLineColor = "#987ad5";
-    const yLineColor = "#db598e";
+    const color0 = 0;
+    const color1 = 1;
 
     return (
         <div className="vector-calc-container">
@@ -72,7 +72,7 @@ function Limits() {
                     openByDefault={false}>
                     Let's plot this so we can get a better feel for it.
                     <JSXGraphBoard3D
-                        boundingBox3D={[[-4, 4], [-4, 4], [0, 0]]}
+                        boundingBox3D={[[-4, 4], [-4, 4], [0, 2]]}
                         view3DPosition={[[-10, -10], [20, 20]]}
                         keepAspectRatio={true}
                         axis={true}
@@ -85,12 +85,12 @@ function Limits() {
                                 [-4, 4],
                             ], {
                                 strokeOpacity: 0.75,
-                                // stepsU: 50,
-                                // stepsV: 50,
+                                stepsU: 50,
+                                stepsV: 50,
                             });
 
-                            const a: JXG.Slider = board.create('slider', [[-15, -9], [-5, -9], [-4, 1, 4]], { name: 'a', ...(sliderAttr(xLineColor)), ...(elAttr(xLineColor, "#222222")) });
-                            const b: JXG.Slider = board.create('slider', [[1.5, -9], [11.5, -9], [-4, 1, 4]], { name: 'b', ...(sliderAttr(yLineColor)), ...(elAttr(yLineColor, "#222222")) });
+                            const a: JXG.Slider = board.create('slider', [[-20, -11], [-5, -11], [-4, 1, 4]], { name: 'a', ...(sliderAttr(color0)), ...(elAttr(color0)) });
+                            const b: JXG.Slider = board.create('slider', [[1.5, -11], [16.5, -11], [-4, 1, 4]], { name: 'b', ...(sliderAttr(color1)), ...(elAttr(color1)) });
 
                             // Case 1
                             view.create("curve3d", [
@@ -100,17 +100,18 @@ function Limits() {
                                 [-4, 4],
                             ], {
                                 strokeOpacity: 0.75,
-                                strokeColor: xLineColor,
+                                strokeColor: curveColor[color0],
                                 strokeWidth: 2,
                             })
+
                             view.create("point3d", [() => 0, () => a.Value(), () => 0], {
                                 // name: 'xGlider',
                                 // withLabel: true,
                                 fixed: true,
-                                strokeColor: xLineColor,
-                                fillColor: xLineColor,
-                                highlightStrokeColor: xLineColor,
-                                highlightFillColor: xLineColor,
+                                strokeColor: curveColor[color0],
+                                fillColor: curveColor[color0],
+                                highlightStrokeColor: curveColor[color0],
+                                highlightFillColor: curveColor[color0],
                                 size: 5,
                             } as JXG.Point3DAttributes);
 
@@ -122,17 +123,17 @@ function Limits() {
                                 [-4, 4],
                             ], {
                                 strokeOpacity: 0.75,
-                                strokeColor: yLineColor,
+                                strokeColor: curveColor[color1],
                                 strokeWidth: 2,
                             })
                             view.create("point3d", [() => b.Value(), () => 0, () => 1], {
                                 // name: 'yGlider',
                                 // withLabel: true,
                                 fixed: true,
-                                strokeColor: yLineColor,
-                                fillColor: yLineColor,
-                                highlightStrokeColor: yLineColor,
-                                highlightFillColor: yLineColor,
+                                strokeColor: curveColor[color1],
+                                fillColor: curveColor[color1],
+                                highlightStrokeColor: curveColor[color1],
+                                highlightFillColor: curveColor[color1],
                                 size: 5,
                             } as JXG.Point3DAttributes);
 
@@ -223,8 +224,8 @@ function Limits() {
                     <br />
                     The point <KatexInline content="A" /> represents the limit point at <KatexInline content="(0, 0)" /> along the path <KatexInline content="y = kx" />.
                     <JSXGraphBoard3D
-                        boundingBox3D={[[-4, 4], [-4, 4], [0, 0]]}
-                        view3DPosition={[[-10, -10], [20, 20]]}
+                        boundingBox3D={[[-3, 3], [-3, 3], [0, 2]]}
+                        view3DPosition={[[-10, -7], [20, 20]]}
                         keepAspectRatio={true}
                         axis={true}
                         pan={false}
@@ -232,25 +233,24 @@ function Limits() {
                         setup={(board, view) => {
                             view.create("functiongraph3d", [
                                 (x: number, y: number) => x * y / (x ** 2 + y ** 2),
-                                [-4, 4],
-                                [-4, 4],
+                                [-3, 3],
+                                [-3, 3],
                             ], {
                                 strokeOpacity: 0.75,
-                                // stepsU: 50,
-                                // stepsV: 50,
+                                stepsU: 50,
+                                stepsV: 50,
                             });
 
-                            const a: JXG.Slider = board.create('slider', [[-6.5, -9], [3.5, -9], [-4, 1, 4]], { name: 'k', ...(sliderAttr(xLineColor)), ...(elAttr(xLineColor, "#222222")) });
-                            // const b: JXG.Slider = board.create('slider', [[1.5, -9], [11.5, -9], [-4, 1, 4]], { name: 'b', ...(sliderAttr(yLineColor)), ...(elAttr(yLineColor, "#222222")) });
+                            const a: JXG.Slider = board.create('slider', [[-9, -11], [5, -11], [-3, 1, 3]], { name: 'k', ...(sliderAttr(color0)), ...(elAttr(color0)) });
 
                             const line = view.create("curve3d", [
-                                (t: number) => { return Math.abs(a.Value() * t) < 4 ? t : NaN },
+                                (t: number) => { return Math.abs(a.Value() * t) < 3 ? t : NaN },
                                 (t: number) => a.Value() * t,
                                 (_t: number) => a.Value() / (1 + Math.pow(a.Value(), 2)),
-                                [-4, 4],
+                                [-3, 3],
                             ], {
                                 strokeOpacity: 0.75,
-                                strokeColor: xLineColor,
+                                strokeColor: curveColor[color0],
                                 strokeWidth: 2,
                                 name: 'y = kx',
                                 withLabel: true,
@@ -260,10 +260,10 @@ function Limits() {
                                 // name: 'xGlider',
                                 // withLabel: true,
                                 fixed: true,
-                                strokeColor: xLineColor,
-                                fillColor: xLineColor,
-                                highlightStrokeColor: xLineColor,
-                                highlightFillColor: xLineColor,
+                                strokeColor: curveColor[color0],
+                                fillColor: curveColor[color0],
+                                highlightStrokeColor: curveColor[color0],
+                                highlightFillColor: curveColor[color0],
                                 size: 5,
                             } as JXG.Point3DAttributes);
                         }}

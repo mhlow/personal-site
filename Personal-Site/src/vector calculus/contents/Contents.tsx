@@ -6,7 +6,7 @@ function Contents() {
         <div>
             <h1>Contents</h1>
             <ul>
-                {vectorCalculusPages.map(([title, _path, page]) => (
+                {vectorCalculusPages.map(([title, _path, _page]) => (
                     <li key={title}>
                         <Link to={`/vector-calculus/${_path}`}>{title}</Link>
                     </li>

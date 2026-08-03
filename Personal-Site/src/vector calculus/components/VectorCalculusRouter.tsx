@@ -10,6 +10,8 @@ import Limits from "../limits/Limits";
 import ProvingLimits from "../limits/ProvingLimits";
 import Continuity from "../continuity/Continuity";
 import Differentiability from "../differentiability/Differentiability";
+import MultivariableFunctions from "../differentiation/MultivariableFunctions";
+import Differentiation from "../differentiation/Differentiation";
 
 const basePath = "/vector-calculus";
 
@@ -28,6 +30,8 @@ const pages: Array<[string, string, ReactNode]> = [
     ["Proving Limits", "proving-limits", <ProvingLimits />],
     ["Continuity", "continuity", <Continuity />],
     ["Differentiability", "differentiability", <Differentiability />],
+    ["Multivariable Functions", "multivariable-functions", <MultivariableFunctions />],
+    ["Differentiation", "differentiation", <Differentiation />],
 ]
 
 export const vectorCalculusRouter = pages.map(([_title, path, page]) => (

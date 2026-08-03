@@ -1,0 +1,222 @@
+// import { Link } from "react-router-dom";
+import NextPage from "../components/PageNavigation";
+// import Box from "../../components/box/Box";
+import KatexInline from "../../components/katex/KatexInline";
+// import KatexBlock from "../../components/katex/KatexBlock";
+// import ExampleBox from "../components/ExampleBox";
+import { Bold, Italic } from "../../components/font styles/font styles";
+import JSXGraphBoard3D, { sliderAttr, elAttr, curveColor } from "../components/JSXGraph3D/JSXGraph3D";
+
+function MultivariableFunctions() {
+    const color0 = 0;
+    const color1 = 1;
+
+    return (
+        <div className="vector-calc-container">
+            <div className="multivariable-functions-content">
+                <h1>Multivariable Functions</h1>
+                We're familiar with our regular one dimensional functions, <KatexInline content="f : \mathbb{R} \to \mathbb{R}" />.
+                <br />
+                It takes in one real number and outputs another real number, defined by some sort of rule. That's what the
+                {" "}<KatexInline content="\mathbb{R}^1 \to \mathbb{R}^1" /> means.
+                <br />
+                The <KatexInline content="\mathbb{R}^1" /> on the left means that it has a singular input, and maps it to a singular output,
+                represent by the <KatexInline content="\mathbb{R}^1" /> on the right.
+                <br /><br />
+                But what if we want multiple inputs? What if we want multiple outputs? What if we want a function that takes in multiple inputs
+                and outputs multiple outputs?
+
+                <h2>Functions with multiple inputs</h2>
+                <Italic>Functions of several variables </Italic> are in the general form <KatexInline content="f : \mathbb{R}^n \to \mathbb{R}" />.
+                <br /><br />
+                We've already seen functions with multiple inputs, for 2 dimensions, for example
+                <KatexInline content="f : \mathbb{R}^2 \to \mathbb{R}, f(x, y) = e^{-x^2 - y^2}" />.
+                The whole function can be represented in three dimensions.
+
+                <JSXGraphBoard3D
+                    boundingBox3D={[[-3, 3], [-3, 3], [0, 3]]}
+                    view3DPosition={[[-10, -5], [20, 20]]}
+                    keepAspectRatio={true}
+                    axis={false}
+                    pan={false}
+                    zoom={false}
+                    planeRear={[false, false, true]}
+                    setup={(board, view) => {
+                        view.create("functiongraph3d", [
+                            (x: number, y: number) => Math.exp(-(x ** 2) - (y ** 2)),
+                            [-3, 3],
+                            [-3, 3],
+                            [0, 3],
+                        ], {
+                            strokeOpacity: 0.75,
+                            stepsU: 50,
+                            stepsV: 50,
+                        });
+
+                        board.create('text', [-3.2, 8, '$$f(x, y) = e^{-x^2 - y^2}$$'], {
+                            fontSize: 18,
+                            strokeColor: 'black',
+                            fixed: true,
+                            highlight: false,
+                            useMathJax: true,
+                        });
+                    }}
+                />
+
+                We can also have 3 inputs and 1 output, but this becomes a 4 dimensional space.
+                You can do it by thinking of the output (the fourth dimension) as a density (or colour), and the inputs as the position of points
+                in 3D space.
+                <br />
+                So the object you are thinking about is a block of material, with varying density on the inside.
+
+
+                <h2>Functions with multiple outputs</h2>
+                <Italic>Vector-valued functions </Italic> of one variable are in the general form <KatexInline content="f : \mathbb{R} \to \mathbb{R}^m" />.
+                <br /><br />
+                In general, they are functions that take a single input, and output multiple values, or vectors.
+                <br />
+                It can be thought of as a vector (from the origin) tracing out a path with it's tip over time.
+                <br /><br />
+                We only really deal with <Bold>parametric curves</Bold>; that is <KatexInline content="f : \mathbb{R} \to \mathbb{R}^3" />.
+
+                <JSXGraphBoard3D
+                    boundingBox3D={[[-3, 3], [-3, 3], [0, 3]]}
+                    view3DPosition={[[-10, -7], [20, 20]]}
+                    keepAspectRatio={true}
+                    axis={true}
+                    pan={false}
+                    zoom={false}
+                    setup={(board, view) => {
+                        view.create("curve3d", [
+                            (t: number) => Math.sin(t),
+                            (t: number) => Math.cos(t),
+                            (t: number) => Math.exp((t - 10) / 2),
+                            [0, 12],
+                        ], {
+                            strokeOpacity: 0.75,
+                        });
+
+                        board.create('text', [-5.6, 8, '$$f(t) = \\left( \\sin(t), \\cos(t), e^{\\frac{t - 10}{2}} \\right), \\qquad t \\in [0, 12]$$'], {
+                            fontSize: 18,
+                            strokeColor: 'black',
+                            fixed: true,
+                            highlight: false,
+                            useMathJax: true,
+                        });
+
+                        const a = board.create('slider', [[-9, -12], [5, -12], [0, 0, 12]], { name: 't', ...(sliderAttr(color0)), ...(elAttr(color0)), animationLoop: true }) as JXG.Slider & {
+                            startAnimation(direction: number, steps: number, delay?: number): void;
+                        };
+                        a.startAnimation(1, 120, 3000 / 120);
+
+                        view.create('line3d', [
+                            [0, 0, 0],
+                            [() => Math.sin(a.Value()), () => Math.cos(a.Value()), () => Math.exp((a.Value() - 10) / 2)],
+                        ], {
+                            lastArrow: true,
+                        });
+
+                    }}
+                />
+
+                <Italic>Vector-valued functions </Italic> of multiple variables are in the general form <KatexInline content="f : \mathbb{R}^n \to \mathbb{R}^m, n \neq m" />.
+                <br /><br />
+                The only one we deal with in this course is <Bold>parametric surfaces</Bold>; <KatexInline content="f : \mathbb{R}^2 \to \mathbb{R}^3" />.
+                <br />
+                These are surfaces that are defined by two parameters, <KatexInline content="u" /> and <KatexInline content="v" />, and output a point
+                in 3D space.
+                <br />
+                You should think of <KatexInline content="u" /> and <KatexInline content="v" /> as the basis vectors of a plane, each pointing in
+                different directions along the surface.
+
+                <JSXGraphBoard3D
+                    boundingBox3D={[[-5, 5], [-5, 5], [-2, 3]]}
+                    view3DPosition={[[-10, -10], [20, 20]]}
+                    keepAspectRatio={true}
+                    axis={true}
+                    pan={false}
+                    zoom={false}
+                    setup={(board, view) => {
+
+                        // Slider for u
+                        const u: JXG.Slider = board.create('slider', [[-20, -12], [-5, -12], [-3, 0, 3]], { name: 'u', ...(sliderAttr(color0)), ...(elAttr(color0)) });
+                        // Slider for v
+                        const v: JXG.Slider = board.create('slider', [[1.5, -12], [16.5, -12], [-3, -1, 3]], { name: 'v', ...(sliderAttr(color1)), ...(elAttr(color1)) });
+
+                        const x = (u: number, v: number) => u / 2 + v;
+                        const y = (u: number, v: number) => u + Math.sin(v);
+                        const z = (u: number, v: number) => Math.exp(-((u + v) ** 2));
+
+                        const dxdu = (_u: number, _v: number) => 1 / 2;
+                        const dydu = (_u: number, _v: number) => 1;
+                        const dzdu = (u: number, v: number) => -2 * Math.exp(-((u + v) ** 2)) * (u + v);
+                        const dxdv = (_u: number, _v: number) => 1;
+                        const dydv = (_u: number, v: number) => Math.cos(v);
+                        const dzdv = (u: number, v: number) => -2 * Math.exp(-((u + v) ** 2)) * (u + v);
+
+
+                        view.create("parametricsurface3d", [
+                            x,
+                            y,
+                            z,
+                            [-3, 3],
+                            [-3, 3],
+                        ], {
+                            strokeOpacity: 0.75,
+                            stepsU: 60,
+                            stepsV: 60,
+                        });
+
+                        // u Vector
+                        view.create('line3d', [
+                            [
+                                () => x(u.Value(), v.Value()),
+                                () => y(u.Value(), v.Value()),
+                                () => z(u.Value(), v.Value())
+                            ],
+                            [
+                                () => x(u.Value(), v.Value()) + dxdu(u.Value(), v.Value()),
+                                () => y(u.Value(), v.Value()) + dydu(u.Value(), v.Value()),
+                                () => z(u.Value(), v.Value()) + dzdu(u.Value(), v.Value())
+                            ],
+                        ], {
+                            strokeColor: curveColor[color0],
+                            lastArrow: true,
+                        });
+
+                        // v Vector
+                        view.create('line3d', [
+                            [
+                                () => x(u.Value(), v.Value()),
+                                () => y(u.Value(), v.Value()),
+                                () => z(u.Value(), v.Value())
+                            ],
+                            [
+                                () => x(u.Value(), v.Value()) + dxdv(u.Value(), v.Value()),
+                                () => y(u.Value(), v.Value()) + dydv(u.Value(), v.Value()),
+                                () => z(u.Value(), v.Value()) + dzdv(u.Value(), v.Value())
+                            ],
+                        ], {
+                            strokeColor: curveColor[color1],
+                            lastArrow: true,
+                        });
+
+                        board.create('text', [-3.2, 8, '$$f(u, v) = \\left( \\frac{u}{2} + v, \\;\\; u + \\sin(v), \\;\\; e^{-(u + v)^2} \\right), \\qquad u \\in [-3, 3], v \\in [-3, 3]$$'], {
+                            fontSize: 18,
+                            strokeColor: 'black',
+                            fixed: true,
+                            highlight: false,
+                            useMathJax: true,
+                        });
+                    }}
+                />
+
+                <h2>Vector Fields</h2>
+                <p style={{ color: "#888888", fontStyle: "italic" }}>In progress...</p>
+            </div>
+            <NextPage backURL="/vector-calculus/differentiability" backLabel="Differentiability" nextURL="/vector-calculus/differentiation" nextLabel="Differentiation" />
+        </div>
+    )
+}
+
+export default MultivariableFunctions;
