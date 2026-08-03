@@ -89,8 +89,8 @@ function Limits() {
                                 stepsV: 50,
                             });
 
-                            const a: JXG.Slider = board.create('slider', [[-20, -11], [-5, -11], [-4, 1, 4]], { name: 'a', ...(sliderAttr(color0)), ...(elAttr(color0)) });
-                            const b: JXG.Slider = board.create('slider', [[1.5, -11], [16.5, -11], [-4, 1, 4]], { name: 'b', ...(sliderAttr(color1)), ...(elAttr(color1)) });
+                            const a: JXG.Slider = board.create('slider', [[-15, -9], [-5, -9], [-4, 1, 4]], { name: 'a', ...(sliderAttr(color0)), ...(elAttr(color0)) });
+                            const b: JXG.Slider = board.create('slider', [[1.5, -9], [11.5, -9], [-4, 1, 4]], { name: 'b', ...(sliderAttr(color1)), ...(elAttr(color1)) });
 
                             // Case 1
                             view.create("curve3d", [
@@ -241,7 +241,7 @@ function Limits() {
                                 stepsV: 50,
                             });
 
-                            const a: JXG.Slider = board.create('slider', [[-9, -11], [5, -11], [-3, 1, 3]], { name: 'k', ...(sliderAttr(color0)), ...(elAttr(color0)) });
+                            const a: JXG.Slider = board.create('slider', [[-6.5, -9], [3.5, -9], [-3, 1, 3]], { name: 'k', ...(sliderAttr(color0)), ...(elAttr(color0)) });
 
                             const line = view.create("curve3d", [
                                 (t: number) => { return Math.abs(a.Value() * t) < 3 ? t : NaN },

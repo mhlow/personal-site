@@ -34,13 +34,12 @@ function MultivariableFunctions() {
                 The whole function can be represented in three dimensions.
 
                 <JSXGraphBoard3D
-                    boundingBox3D={[[-3, 3], [-3, 3], [0, 3]]}
-                    view3DPosition={[[-10, -5], [20, 20]]}
+                    boundingBox3D={[[-3, 3], [-3, 3], [0, 2]]}
+                    view3DPosition={[[-10, -7], [20, 20]]}
                     keepAspectRatio={true}
-                    axis={false}
+                    axis={true}
                     pan={false}
                     zoom={false}
-                    planeRear={[false, false, true]}
                     setup={(board, view) => {
                         view.create("functiongraph3d", [
                             (x: number, y: number) => Math.exp(-(x ** 2) - (y ** 2)),
@@ -104,7 +103,7 @@ function MultivariableFunctions() {
                             useMathJax: true,
                         });
 
-                        const a = board.create('slider', [[-9, -12], [5, -12], [0, 0, 12]], { name: 't', ...(sliderAttr(color0)), ...(elAttr(color0)), animationLoop: true }) as JXG.Slider & {
+                        const a = board.create('slider', [[-6.5, -9], [3.5, -9], [0, 0, 12]], { name: 't', ...(sliderAttr(color0)), ...(elAttr(color0)), animationLoop: true }) as JXG.Slider & {
                             startAnimation(direction: number, steps: number, delay?: number): void;
                         };
                         a.startAnimation(1, 120, 3000 / 120);
@@ -139,9 +138,9 @@ function MultivariableFunctions() {
                     setup={(board, view) => {
 
                         // Slider for u
-                        const u: JXG.Slider = board.create('slider', [[-20, -12], [-5, -12], [-3, 0, 3]], { name: 'u', ...(sliderAttr(color0)), ...(elAttr(color0)) });
+                        const u: JXG.Slider = board.create('slider', [[-15, -9], [-5, -9], [-3, 0, 3]], { name: 'u', ...(sliderAttr(color0)), ...(elAttr(color0)) });
                         // Slider for v
-                        const v: JXG.Slider = board.create('slider', [[1.5, -12], [16.5, -12], [-3, -1, 3]], { name: 'v', ...(sliderAttr(color1)), ...(elAttr(color1)) });
+                        const v: JXG.Slider = board.create('slider', [[1.5, -9], [11.5, -9], [-3, -1, 3]], { name: 'v', ...(sliderAttr(color1)), ...(elAttr(color1)) });
 
                         const x = (u: number, v: number) => u / 2 + v;
                         const y = (u: number, v: number) => u + Math.sin(v);
@@ -201,7 +200,7 @@ function MultivariableFunctions() {
                             lastArrow: true,
                         });
 
-                        board.create('text', [-3.2, 8, '$$f(u, v) = \\left( \\frac{u}{2} + v, \\;\\; u + \\sin(v), \\;\\; e^{-(u + v)^2} \\right), \\qquad u \\in [-3, 3], v \\in [-3, 3]$$'], {
+                        board.create('text', [-8, 8, '$$f(u, v) = \\left( \\frac{u}{2} + v, \\;\\; u + \\sin(v), \\;\\; e^{-(u + v)^2} \\right), \\qquad u \\in [-3, 3], v \\in [-3, 3]$$'], {
                             fontSize: 18,
                             strokeColor: 'black',
                             fixed: true,

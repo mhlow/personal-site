@@ -224,8 +224,8 @@ function sliderAttr(color: number = 0) {
             lineCap: 'round',
             strokeColor: '#eeeef3'
         },
-        point1: { fixed: true, frozen: true },
-        point2: { fixed: true, frozen: true },
+        point1: { fixed: true },
+        point2: { fixed: true },
         drawLabel: true,
         face: 'o',
         fillColor: curveColor[color],

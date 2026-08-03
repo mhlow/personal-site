@@ -57,7 +57,7 @@ function ProvingLimits() {
                 }
                     openByDefault={false}>
                     Try it youself, can ask me for solution.
-                    More difficult that the others.
+                    More difficult than the others.
                     </ExampleBox>
             </div>
             <NextPage backURL="/vector-calculus/limits" backLabel="Limits" nextURL="/vector-calculus/continuity" nextLabel="Continuity" />
