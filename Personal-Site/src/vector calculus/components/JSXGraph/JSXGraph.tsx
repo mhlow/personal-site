@@ -4,7 +4,6 @@ import JXG from "jsxgraph";
 
 interface JSXGraphBoardOptions {
     height?: number;
-    width?: number;
     boundingBox?: [number, number, number, number];
     keepAspectRatio?: boolean;
     axis?: boolean;
@@ -16,7 +15,6 @@ interface JSXGraphBoardOptions {
 
 function JSXGraphBoard({
     height = 24,
-    width,
     boundingBox = [-10, 10, 10, -10],
     keepAspectRatio = true,
     axis = true,
@@ -29,6 +27,7 @@ function JSXGraphBoard({
     const containerRef = useRef<HTMLDivElement>(null);
 
     const axisColor = "#abb2bf"; // Default axis color
+    JXG.Options.text.useMathJax = true;
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -66,12 +65,14 @@ function JSXGraphBoard({
     return (
         <>
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+
             <div className="jsxgraph-container">
                 <div
                     id={containerId}
                     ref={containerRef}
-                    className="jxgbox math-graph-board aa"
-                    style={{ width: width ? `${width}rem` : "100%", height: `${height}rem` }}
+                    className="jxgbox math-graph-board"
+                    // style={{ width: height ? `${height * 2}rem` : "100%", height: `${height}rem` }}
+                    style={{ width: "100%", height: `${height}rem` }}
                 />
             </div>
         </>

@@ -13,7 +13,7 @@ function HomePage() {
 
             <Link to="/test">Test page</Link>
             <br />
-            <Link to="/vector-calculus/introduction">Vector Calculus Introduction</Link>
+            <Link to="/vector-calculus">Vector Calculus</Link>
             <br />
         </div>
     )
