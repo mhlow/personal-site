@@ -116,7 +116,6 @@ function MultivariableFunctions() {
                         ], {
                             lastArrow: true,
                         });
-
                     }}
                 />
 

@@ -4,7 +4,7 @@ import KatexBlock from "../../components/katex/KatexBlock";
 import KatexInline from "../../components/katex/KatexInline";
 import Box from "../../components/box/Box";
 // import JSXGraphBoard3D, { sliderAttr, elAttr } from "../components/JSXGraph3D/JSXGraph3D";
-import ExampleBox from "../components/ExampleBox";
+import ExampleBox from "../components/ExampleBox/ExampleBox";
 
 function ProvingLimits() {
     // const xLineColor = "#987ad5";
@@ -27,6 +27,10 @@ function ProvingLimits() {
                         \\lim_{(x, y) \\to (a, b)} f(x, y) = L
                     `} />
                 </Box>
+
+                This method is identical to the one in single variable calculus, just with another dimension. 
+                <br />
+                You'll need to use the same methods to find the upper and lower bounds. Some will require the use of the absolute value.
 
                 <ExampleBox header={
                     <>

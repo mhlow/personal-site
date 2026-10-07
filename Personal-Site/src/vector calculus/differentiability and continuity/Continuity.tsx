@@ -3,7 +3,7 @@ import Box from "../../components/box/Box";
 import { Bold } from "../../components/font styles/font styles";
 import KatexInline from "../../components/katex/KatexInline";
 import KatexBlock from "../../components/katex/KatexBlock";
-import ExampleBox from "../components/ExampleBox";
+import ExampleBox from "../components/ExampleBox/ExampleBox";
 
 function Continuity() {
 	return (

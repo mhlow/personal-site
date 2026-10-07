@@ -1,15 +1,10 @@
 // import { Link } from "react-router-dom";
 import NextPage from "../components/PageNavigation";
-// import Box from "../../components/box/Box";
 import KatexInline from "../../components/katex/KatexInline";
 import KatexBlock from "../../components/katex/KatexBlock";
-// import KatexBlock from "../../components/katex/KatexBlock";
-// import ExampleBox from "../components/ExampleBox";
-import { Bold, Italic } from "../../components/font styles/font styles";
+import { Bold } from "../../components/font styles/font styles";
 import Box from "../../components/box/Box";
-import Katex from "katex/katex.js";
-import ExampleBox from "../components/ExampleBox";
-// import JSXGraphBoard3D from "../components/JSXGraph3D/JSXGraph3D";
+import ExampleBox from "../components/ExampleBox/ExampleBox";
 
 function Differentiation() {
 	return (
@@ -68,7 +63,7 @@ function Differentiation() {
 						\end{bmatrix}
 					" />
 					<KatexBlock content="
-						D\vec{F}(\vec{x}) =
+						\mathbf{D} \vec{F}(\vec{x}) =
 						\frac{\partial \vec{F}}{\partial \vec{x}} =
 						\begin{bmatrix}
 							\frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \cdots & \frac{\partial f_1}{\partial x_n} \\[1ex]
@@ -111,8 +106,7 @@ function Differentiation() {
 					<br />
 					Let's identify our <KatexInline content="g_1" />, <KatexInline content="g_2" />, and <KatexInline content="g_3" />.
 					<KatexBlock content="
- 						\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\parallel}{#2}}{#1}}
-						\vec{g}(x, y) = (\equalto{x^2 + 1\vphantom{y}}{g_1}, \equalto{y^2}{g_2}, \equalto{x + y}{g_3})
+						\vec{g}(x, y) = (\underbrace{x^2 + 1}_{g_1}, \underbrace{y^2}_{g_2}, \underbrace{x + y}_{g_3})
 					"/>
 					We can now compute our derivative matrix:
 					<KatexBlock content="
@@ -124,7 +118,7 @@ function Differentiation() {
 						\end{bmatrix}
 						=
 						\begin{bmatrix}
-							2x & 1 \\[1ex]
+							2x & 0 \\[1ex]
 							0 & 2y \\[1ex]
 							1 & 1
 						\end{bmatrix}
@@ -136,28 +130,186 @@ function Differentiation() {
 				If <KatexInline content="\vec{f}: \mathbb{R}^m \to \mathbb{R}^p" /> and <KatexInline content="\vec{g}: \mathbb{R}^n \to \mathbb{R}^m" />,
 				then the derivative of the composition <KatexInline content="\vec{f} \circ \vec{g}" /> is given by:
 				<KatexBlock content="
-					D(\vec{f} \circ \vec{g})(\vec{x}) = D\vec{f} \cdot D\vec{g}
+					\mathbf{D} (\vec{f} \circ \vec{g})(\vec{x}) = \mathbf{D}\vec{f} \cdot \mathbf{D}\vec{g}
 				" />
 				This is the matrix version of the chain rule.
 				<br />
-				The functions given can often be written using the same variables, so you <Bold>must</Bold> remember that the variables used in the
-				first function are different from the variables used in the second function, or it'll bite you in the ass.
+				<Bold>Importantly</Bold>, the output of the inner (right) function is the input of the outer (left) function. This means, when we
+				calculate <KatexInline content="\mathbf{D}\vec{f}" />, we must use the output of the function <KatexInline content="\vec{g}" /> as the input of <KatexInline content="\vec{f}" />.
+				<br />
+				To make this explicit, we can write the chain rule as:
+				<KatexBlock content="
+					\mathbf{D} (\vec{f} \circ \vec{g})(\vec{x}) = \mathbf{D}\vec{f}(g(\vec{x})) \cdot \mathbf{D}\vec{g}(\vec{x})
+				" />
 				<br />
 				See the example for clarification.
 				<ExampleBox header={
 					<>
-						Find the derivative of <KatexInline content="f \circ g" /> at <KatexInline content="()" />, given:
+						Find the derivative matrix of <KatexInline content="\vec{f} \circ \vec{g}" /> at <KatexInline content="(0, 1)" />, given:
 						<KatexBlock content="
 							\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\parallel}{#2}}{#1}}
-							f : \mathbb{R}^2 \to \mathbb{R}^3, f(x, y) = (x^2 + 1, y^2, x + y)\\
-							g : \mathbb{R}^2 \to \mathbb{R}^2, g(x, y) = (x^2 + y^2, x + y)
+							\vec{f} : \mathbb{R}^2 \to \mathbb{R}^3, \vec{f}(x, y) = (x^2 + 1, y^2, x + y)\\
+							\vec{g} : \mathbb{R}^2 \to \mathbb{R}^2, \vec{g}(u, v) = (u^2 + v^2, u + v)
 						"/>
 					</>
 				}>
+					Let's find <KatexInline content="\mathbf{D}\vec{f}" /> and <KatexInline content="\mathbf{D}\vec{g}" />, in terms of their variables.
+					<br />
+					Find our <KatexInline content="f_1" />, <KatexInline content="f_2" />, and <KatexInline content="f_3" />, and <KatexInline content="g_1" />, <KatexInline content="g_2" />.
 
+					<KatexBlock content="\vec{f}(x, y) = (\underbrace{x^2 + 1}_{f_1}, \underbrace{y^2}_{f_2}, \underbrace{x + y}_{f_3})" />
+					<KatexBlock content="\vec{g}(u, v) = (\underbrace{u^2 + v^2}_{g_1}, \underbrace{u + v}_{g_2})" />
+					<KatexBlock content="
+						\mathbf{D}\vec{f}(x, y) =
+						\begin{bmatrix}
+							\frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y} \\[1ex]
+							\frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y} \\[1ex]
+							\frac{\partial f_3}{\partial x} & \frac{\partial f_3}{\partial y}
+						\end{bmatrix}
+						=
+						\begin{bmatrix}
+							2x & 0 \\[1ex]
+							0 & 2y \\[1ex]
+							1 & 1
+						\end{bmatrix}
+					" />
+					<KatexBlock content="
+						\mathbf{D}\vec{g}(u, v) =
+						\begin{bmatrix}
+							\frac{\partial g_1}{\partial u} & \frac{\partial g_1}{\partial v} \\[1ex]
+							\frac{\partial g_2}{\partial u} & \frac{\partial g_2}{\partial v}
+						\end{bmatrix}
+						=
+						\begin{bmatrix}
+							2u & 2v \\[1ex]
+							1 & 1
+						\end{bmatrix}
+					" />
+
+					Now we can find <KatexInline content="\mathbf{D}\vec{g}(0, 1)" />, since <KatexInline content="(0, 1)" /> is the input to <KatexInline content="\vec{g}" />.
+					<KatexBlock content="
+						\mathbf{D}\vec{g}(0, 1) =
+						\begin{bmatrix}
+							2(0) & 2(1) \\[1ex]
+							1 & 1
+						\end{bmatrix} =
+						\begin{bmatrix}
+							0 & 2 \\[1ex]
+							1 & 1
+						\end{bmatrix}
+					" />
+
+					Now, to find <KatexInline content="\mathbf{D}\vec{f}" />, we need to use the output of <KatexInline content="\vec{g}" /> as the 
+					input of <KatexInline content="\vec{f}" />. Computing <KatexInline content="\vec{g}(0, 1) = (1, 1)" />, thus we can see that
+					we should be evaluating <KatexInline content="\mathbf{D}\vec{f}(1, 1)" />.
+
+					<KatexBlock content="
+						\mathbf{D}\vec{f}(1, 1) =
+						\begin{bmatrix}
+							2(1) & 0 \\[1ex]
+							0 & 2(1) \\[1ex]
+							1 & 1
+						\end{bmatrix} =
+						\begin{bmatrix}
+							2 & 0 \\[1ex]
+							0 & 2 \\[1ex]
+							1 & 1
+						\end{bmatrix}
+					" />
+					Now we can compute <KatexInline content="\mathbf{D}(\vec{f} \circ \vec{g})(0, 1)" />:
+					<KatexBlock content="
+						\mathbf{D}(\vec{f} \circ \vec{g})(0, 1) = \mathbf{D}\vec{f}(1, 1) \cdot \mathbf{D}\vec{g}(0, 1) =
+						\begin{bmatrix}
+							2 & 0 \\[1ex]
+							0 & 2 \\[1ex]
+							1 & 1
+						\end{bmatrix}
+						\begin{bmatrix}
+							0 & 2 \\[1ex]
+							1 & 1
+						\end{bmatrix}
+						=
+						\begin{bmatrix}
+							0 & 4 \\[1ex]
+							2 & 2 \\[1ex]
+							1 & 3
+						\end{bmatrix}
+					" />
+				</ExampleBox>
+
+				<ExampleBox header={
+					<>
+						Let <KatexInline content="\vec{f}(x, y) = (x^2, 2x + y, y^3)" />, and <KatexInline content="\vec{g}(u, v, w) = (u^2 + 2w, u - v^2)" />.
+						<br /><br />
+						Find <KatexInline content="\mathbf{D}(\vec{f}(\vec{g}(\vec{f}(x, y))))" /> at <KatexInline content="(1, 0)" />.
+					</>
+				}>
+					<KatexBlock content="
+						\mathbf{D}(\vec{f}) = 
+						\begin{bmatrix}
+							\frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y} \\[1ex]
+							\frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y} \\[1ex]
+							\frac{\partial f_3}{\partial x} & \frac{\partial f_3}{\partial y}
+						\end{bmatrix}
+						=
+						\begin{bmatrix}
+							2x & 0 \\[1ex]
+							2 & 1 \\[1ex]
+							0 & 3y^2
+						\end{bmatrix}
+					" />
+					<KatexBlock content="
+						\mathbf{D}(\vec{g}) =
+						\begin{bmatrix}
+							\frac{\partial g_1}{\partial u} & \frac{\partial g_1}{\partial v} & \frac{\partial g_1}{\partial w} \\[1ex]
+							\frac{\partial g_2}{\partial u} & \frac{\partial g_2}{\partial v} & \frac{\partial g_2}{\partial w}
+							\end{bmatrix}
+						=
+						\begin{bmatrix}
+							2u & 0 & 2 \\[1ex]
+							1 & -2v & 0
+						\end{bmatrix}
+					" />
+
+					The point <KatexInline content="(1, 0)" /> goes from <KatexInline content="(1, 0) \to (1, 2, 0) \to  (1, -3)" />.
+					<KatexBlock content="
+						\begin{align*}
+							\mathbf{D}(\vec{f}(\vec{g}(\vec{f}(1, 0)))) &=
+							\begin{bmatrix}
+								2(1) & 0 \\[1ex]
+								2 & 1 \\[1ex]
+								0 & 3(-3)^2
+							\end{bmatrix}
+							\begin{bmatrix}
+								2(1) & 0 & 2 \\[1ex]
+								1 & -2(2) & 0
+							\end{bmatrix}
+							\begin{bmatrix}
+								2(1) & 0 \\[1ex]
+								2 & 1 \\[1ex]
+								0 & 3(0)^2
+							\end{bmatrix} \\
+							&=
+							\begin{bmatrix}
+								2 & 0 \\[1ex]
+								2 & 1 \\[1ex]
+								0 & 27
+							\end{bmatrix}
+							\begin{bmatrix}
+								4 & 0 \\[1ex]
+								-6 & -4
+							\end{bmatrix} \\
+							&=
+							\begin{bmatrix}
+								8 & 0 \\[1ex]
+								2 & -4 \\[1ex]
+								-162 & -108
+							\end{bmatrix}
+						\end{align*}
+					" />
 				</ExampleBox>
 			</div>
-			<NextPage backURL="/vector-calculus/multivariable-functions" backLabel="Multivariable Functions" nextURL="/vector-calculus/differentiability" nextLabel="Differentiability" />
+			<NextPage backURL="/vector-calculus/multivariable-functions" backLabel="Multivariable Functions" nextURL="/vector-calculus/curves" nextLabel="Parametrised Curves" />
 		</div>
 	)
 }

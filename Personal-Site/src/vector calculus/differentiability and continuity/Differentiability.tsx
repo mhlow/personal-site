@@ -3,7 +3,7 @@ import NextPage from "../components/PageNavigation";
 import Box from "../../components/box/Box";
 import KatexInline from "../../components/katex/KatexInline";
 import KatexBlock from "../../components/katex/KatexBlock";
-import ExampleBox from "../components/ExampleBox";
+import ExampleBox from "../components/ExampleBox/ExampleBox";
 import { Bold, Italic } from "../../components/font styles/font styles";
 import JSXGraphBoard3D from "../components/JSXGraph3D/JSXGraph3D";
 
@@ -39,7 +39,7 @@ function Differentiability() {
 					continuous at <KatexInline content="(a, b)" />, then <KatexInline content="f" /> is differentiable at <KatexInline content="(a, b)" />.
 				</Box>
 
-				Using this theorem, this simplifies the proces to prove differentiability:
+				Using this theorem, this simplifies the process to prove differentiability:
 				<ol>
 					<li>Check if the partial derivative in the <KatexInline content="x" /> direction exists.</li>
 					<ul>
@@ -112,6 +112,8 @@ function Differentiability() {
 							&= 0
 						\\end{align*}
 						`} />
+					
+					<h3>This is only needed if you're checking for <KatexInline content="C^1" />, in next chapter</h3>
 					Now we have to check that the derivative function is continuous at <KatexInline content="(0, 0)" />.
 					<br />
 					There's a few ways to do this, such as the <Link to="/vector-calculus/proving-limits">squeeze theorem</Link>.
@@ -248,7 +250,8 @@ function Differentiability() {
 						const Ntip = view.create("point3d", [
 							() => P.X() - unitNormal(P.X(), P.Y()).nx * normalLength,
 							() => P.Y() - unitNormal(P.X(), P.Y()).ny * normalLength,
-							() => P.Z() - unitNormal(P.X(), P.Y()).nz * normalLength,
+							// () => P.Z() - unitNormal(P.X(), P.Y()).nz * normalLength,
+							() => P.Z(),
 						], {
 							visible: false,
 						} as JXG.Point3DAttributes);

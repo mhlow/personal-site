@@ -4,7 +4,7 @@ import KatexBlock from "../../components/katex/KatexBlock";
 import KatexInline from "../../components/katex/KatexInline";
 import Box from "../../components/box/Box";
 import JSXGraphBoard3D, { sliderAttr, elAttr, curveColor } from "../components/JSXGraph3D/JSXGraph3D";
-import ExampleBox from "../components/ExampleBox";
+import ExampleBox from "../components/ExampleBox/ExampleBox";
 
 function Limits() {
     const color0 = 0;
